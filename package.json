@@ -5,15 +5,18 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "tsc-check": "tsc --project apps/zoopi-web/tsconfig.json"
   },
   "private": true,
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "11.9.0",
     "@emotion/server": "11.4.0",
     "@emotion/styled": "11.8.1",
     "@nrwl/next": "14.1.9",
     "core-js": "^3.6.5",
+    "emotion-reset": "^3.0.1",
     "next": "12.1.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
