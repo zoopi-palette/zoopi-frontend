@@ -14,9 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@web/*": ["apps/zoopi-web/*"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
