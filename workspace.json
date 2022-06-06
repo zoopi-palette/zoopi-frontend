@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "zoopi-web": "apps/zoopi-web",
+    "zoopi-web-e2e": "apps/zoopi-web-e2e"
+  }
+}
