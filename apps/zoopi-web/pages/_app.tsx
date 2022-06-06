@@ -1,17 +1,11 @@
 import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import {ThemeProvider} from "@web/styles"
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to zoopi-web!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
 
