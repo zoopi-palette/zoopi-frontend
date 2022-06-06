@@ -10,7 +10,9 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": [],
+            "allow": [
+              "@web"
+            ],
             "depConstraints": [
               {
                 "sourceTag": "*",
@@ -24,7 +26,11 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-empty-interface": [
+          "off"
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
