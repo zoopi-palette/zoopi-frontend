@@ -2,7 +2,7 @@ import {useTheme} from "@emotion/react"
 import React from "react"
 import { ReactSVG } from 'react-svg'
 
-type IconName = |
+export type IconName = |
   "arrow-back" |
   "arrow-right" |
   "check-circle" |

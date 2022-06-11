@@ -54,6 +54,16 @@
       "options": {
         "lintFilePatterns": ["apps/zoopi-web/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "start-storybook -p 6006 -c apps/zoopi-web/.storybook"
+          }
+        ]
+      }
     }
   },
   "tags": []
