@@ -1,4 +1,4 @@
-import { ThemeProvider } from "../styles"
+import { GlobalStyle, ThemeProvider } from "../styles"
 import React from "react"
 
 export const parameters = {
@@ -14,6 +14,7 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <ThemeProvider>
+      <GlobalStyle/>
       <Story/>
     </ThemeProvider>
   )
