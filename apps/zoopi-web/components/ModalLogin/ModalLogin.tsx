@@ -1,6 +1,8 @@
 import {useTheme} from '@emotion/react';
 import {Modal} from '@web/components/Modal';
 import {Icon} from "@web/components/Icon"
+import {Logo} from "@web/components/Logo"
+import {Button} from "@web/components/Button"
 import {TextInput} from "@web/components/TextInput"
 import {TextInputPassword} from "@web/components/TextInputPassword"
 
@@ -11,10 +13,11 @@ const BUTTON_WIDTH = 400;
 
 export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   const theme = useTheme();
-  const inputCss = {
+  
+  const divCss = {
     marginBottom: 32,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirction: "column"
   }
 
   const buttonCss = {
@@ -36,30 +39,29 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
       width="560px"
     >
       <div css={{ padding: '80px', flexDirection: 'column' }}>
-        <Icon name="zoopi-logo" size={59}></Icon>
-        <div css={{ flexDirection: 'column', width: '100%' }}>
-          <form
+        <div css={{justifyContent: "center", marginBottom: 50}}>
+          <Logo height={59} width={157}></Logo>
+        </div>
+        <form
             css={{
+              width: '100%',
               marginBottom: 32,
               display: 'flex',
               flexDirection: 'column',
             }}
           >
-            <div css={inputCss}>
-            <TextInput label="이메일" placeholder="sample@example.co.kr" type="email"></TextInput>
+            <div css={divCss}>
+            <TextInput label="이메일" placeholder="sample@example.co.kr" type="email" value=""></TextInput>
             </div>
-            <div css={inputCss}>
-              <TextInputPassword></TextInputPassword>
+            <div css={divCss}>
+              <TextInputPassword value=""></TextInputPassword>
             </div>
-            <button
-            // color="main"
-            // appearance="filled"
+            <Button
+            color="main"
+            appearance="filled"
             css={{ fontWeight: 700 }}
-          >
-            로그인
-          </button>
+            >로그인</Button>
           </form>
-        </div>
         <div css={{ flexDirection: 'column' }}>
           <button css={buttonCss}>
             <div css={{ position: 'absolute' }}>
