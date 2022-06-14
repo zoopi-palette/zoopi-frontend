@@ -1,4 +1,5 @@
 import {useTheme} from "@emotion/react"
+import { Button } from "@web/components/Button"
 import { Icon } from "@web/components/Icon"
 
 const HomePage = () => {
@@ -12,6 +13,7 @@ const HomePage = () => {
         Home
       </div>
       <Icon name={"circle"} size={100} color={"red"}/>
+      <Button>{"test"}</Button>
     </div>
   )
 }
