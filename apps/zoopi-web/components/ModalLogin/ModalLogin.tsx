@@ -5,6 +5,7 @@ import {Logo} from "@web/components/Logo"
 import {Button} from "@web/components/Button"
 import {TextInput} from "@web/components/TextInput"
 import {TextInputPassword} from "@web/components/TextInputPassword"
+import { useCallback } from 'react';
 
 export type ModalLoginProps = {
   onClose: () => void;
@@ -16,25 +17,16 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   
   const divCss = {
     marginBottom: 32,
-    display: 'flex',
     flexDirction: "column"
   }
 
-  const buttonCss = {
-    backgroundColor: 'transparent',
-    border: `1px solid ${theme.colors['grey-40']}`,
-    maxWidth: BUTTON_WIDTH,
-    width: '100%',
-    color: theme.colors['grey-90'],
-    marginTop: 16,
-    fontWeight: 700,
-  };
+  const handleCloseClick = useCallback(()=>{
+    onClose();
+  },[onClose])
 
   return (
     <Modal
-      onClose={() => {
-        console.log('dd');
-      }}
+      onClose={handleCloseClick}
       height= "713px"
       width="560px"
     >
@@ -62,19 +54,19 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             css={{ fontWeight: 700 }}
             >로그인</Button>
           </form>
-        <div css={{ flexDirection: 'column' }}>
-          <button css={buttonCss}>
-            <div css={{ position: 'absolute' }}>
-            <Icon name="kakao" size={24}></Icon>
-            </div>
+        <div css={{ flexDirection: 'column', position:"relative", "*": {marginBottom: 16} }}>
+          <Button appearance="outline">
+            <span css={{ position: 'absolute', left:22 }}>
+              <Icon name="kakao" size={24}></Icon>
+            </span>
             카카오로 시작하기
-          </button>
-          <button css={buttonCss}>
-            <div css={{ position: 'absolute' }}>
-            <Icon name="naver" size={24}></Icon>
-            </div>
+          </Button>
+          <Button appearance="outline">
+            <span css={{ position: 'absolute', left:22, width: "fit-content"}}>
+              <Icon name="naver" size={24}></Icon>
+            </span>
             네이버로 시작하기
-          </button>
+          </Button>
           <div css={{ marginTop: 16, alignItems: 'center' }}>
             {/* <Link href="/signIn" passHref> */}
             <a

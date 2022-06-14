@@ -26,12 +26,9 @@ export const Modal = ({
     onClose();
   },[onClose])
 
-  const handleClickClose: MouseEventHandler = useCallback(
-    () => {
+  const handleClickClose: MouseEventHandler = useCallback(() => {
       onClose();
-    },
-    [onClose]
-  );
+  },[onClose]);
 
   return (
     <div

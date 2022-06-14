@@ -12,8 +12,7 @@ export type IconName = |
   "eye" |
   "search" |
   "kakao" |
-  "naver" | 
-  "zoopi-logo"
+  "naver"
 
 export type IconProps = {
   name: IconName
@@ -34,6 +33,7 @@ export const Icon = ({
       fontSize: 0,
     }}>
       <ReactSVG 
+        css={{display: "inline-block"}}
         src={`icons/${name}.svg`}
         beforeInjection={(svg) => {
           svg.setAttribute('style', `width: ${size}px; height: ${size}px;`)
