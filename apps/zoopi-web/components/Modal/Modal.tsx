@@ -3,12 +3,16 @@ import React, {useCallback, MouseEventHandler, ReactNode, useRef} from "react"
 import {Icon} from "@web/components/Icon"
 
 export type ModalProps = {
-  onClose: ()=>void
+  onClose: ()=>void,
+  height?: string,
+  width?:string
   children: ReactNode
 }
 
 export const Modal = ({
   onClose,
+  height,
+  width,
   children,
 }: ModalProps) => {
   const theme = useTheme();
@@ -49,9 +53,8 @@ export const Modal = ({
       flexDirection:"column", 
       alignItems: "stretch",
       backgroundColor: theme.colors.white,
-      width: "100%",
-      maxWidth: "386px",
-      height: "fit-contents",
+      width: width ? width : "fit-content",
+      height: height? height: "fit-content",
       minHeight: 200,
       borderRadius: "12px",
       padding: 16

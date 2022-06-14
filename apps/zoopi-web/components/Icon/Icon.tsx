@@ -10,7 +10,10 @@ export type IconName = |
   "close-circle" |
   "close" |
   "eye" |
-  "search"
+  "search" |
+  "kakao" |
+  "naver" | 
+  "zoopi-logo"
 
 export type IconProps = {
   name: IconName
