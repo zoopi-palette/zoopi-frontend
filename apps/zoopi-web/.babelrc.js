@@ -3,7 +3,7 @@ module.exports = {
     [
       "next/babel",
       {
-        "@babel/preset-react": {
+        "preset-react": {
           "runtime": "automatic",
           "importSource": "@emotion/react"
         }
