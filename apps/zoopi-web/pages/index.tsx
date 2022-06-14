@@ -11,7 +11,7 @@ const HomePage = () => {
       }}>
         Home
       </div>
-      <Icon name={"circle"}/>
+      <Icon name={"circle"} size={100} color={"red"}/>
     </div>
   )
 }
