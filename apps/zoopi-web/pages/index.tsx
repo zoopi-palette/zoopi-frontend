@@ -13,7 +13,7 @@ const HomePage = () => {
         Home
       </div>
       <ModalLogin onClose={()=>{console.log("modal closed!")}}></ModalLogin>
-      <Icon name={"circle"}/>
+      <Icon name={"circle"} size={100} color={"red"}/>
     </div>
   )
 }
