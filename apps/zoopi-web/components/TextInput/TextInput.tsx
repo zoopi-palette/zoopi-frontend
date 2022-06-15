@@ -1,11 +1,11 @@
 import {useTheme} from "@emotion/react"
-import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallback, useMemo, useState} from "react"
+import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallback, useMemo, useState,MutableRefObject,forwardRef} from "react"
 import {Icon} from "@web/components/Icon"
 import {Css, CssObject} from "@web/styles/theme"
 
 export type TextInputProps = {
   children?: ReactNode
-  value: string
+  value?: string
   placeholder?: string
   onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>)=>void
   onBlur?: FocusEventHandler<HTMLInputElement>
@@ -13,7 +13,9 @@ export type TextInputProps = {
   label?: string | null
   type?: "email" | "password" | "text";
   clearDisabled?: boolean
-  right?: ReactNode
+  right?: ReactNode,
+  forwardedRef?: string,
+  displayName?:string,
 }
 
 export const TextInput = ({
@@ -26,6 +28,8 @@ export const TextInput = ({
   clearDisabled = false,
   right,
   type = "text",
+  forwardedRef,
+  displayName,
   ...rest
 }: TextInputProps) => {
   const theme = useTheme()
@@ -67,7 +71,7 @@ export const TextInput = ({
     setLocalValue("")
     onChange?.("")
   },[onChange])
-  
+
   return (
     <label css={{
       display: "inline-flex",
@@ -91,6 +95,7 @@ export const TextInput = ({
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleFocus}
+        ref={forwardedRef}
         css={css}
       />
       <div css={{position: "absolute", right: 0, bottom: 6}}>

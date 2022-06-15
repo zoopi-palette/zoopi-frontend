@@ -4,21 +4,44 @@ import {Modal} from '@web/components/Modal';
 import {Icon} from "@web/components/Icon"
 import {Logo} from "@web/components/Logo"
 import {Button} from "@web/components/Button"
-import {TextInput} from "@web/components/TextInput"
-import {TextInputPassword} from "@web/components/TextInputPassword"
+import {TextInput,TextInputProps} from "@web/components/TextInput"
+import {TextInputPassword,TextInputPasswordProps} from "@web/components/TextInputPassword"
+import { useCallback,FormEventHandler,useRef,forwardRef,MutableRefObject,ElementType, useEffect } from 'react';
+
+const BUTTON_WIDTH = 400;
 
 export type ModalLoginProps = {
   onClose: () => void;
 };
-const BUTTON_WIDTH = 400;
 
 export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   const theme = useTheme();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmitLogin:FormEventHandler = useCallback((event)=>{
+    event.preventDefault();
+
+    const email = emailRef?.current?.value;
+    const password = passwordRef?.current?.value;
+
+    console.log(email, password)
+  },[])
+
+  const ForwardedComponent = <T, >(Component:ElementType,props: T, displayName:string) => {
+    const forwardedRef = (_:T, ref:MutableRefObject<HTMLInputElement>) => {
+      return <Component forwardedRef={ref} {...props}/>;
+    };
+    forwardedRef.displayName=displayName;
+    return forwardRef(forwardedRef);
+  };
   
-  const divCss = {
-    marginBottom: 32,
-    flexDirction: "column"
-  }
+  const EmailField = ForwardedComponent<TextInputProps>(TextInput,{label:"이메일", placeholder:"sample@example.co.kr", type:"email"},"EmailInput");
+  const PasswordField = ForwardedComponent<TextInputPasswordProps>(TextInputPassword,{},"PasswordInput");
+
+  useEffect(()=>{
+    emailRef?.current?.focus();
+  },[])
 
   return (
     <Modal
@@ -35,7 +58,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
         <div css={{justifyContent: "center", marginBottom: 50}} aria-label="zoopi logo">
           <Logo height={59} width={157}></Logo>
         </div>
-        <form
+        <form onSubmit={handleSubmitLogin}
             css={{
               width: '100%',
               marginBottom: 32,
@@ -43,11 +66,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
               flexDirection: 'column',
             }}
           >
-            <div css={divCss}>
-            <TextInput label="이메일" placeholder="sample@example.co.kr" type="email" value=""></TextInput>
+            <div css={{marginBottom: 32}}>
+              <EmailField ref={emailRef}></EmailField>
             </div>
-            <div css={divCss}>
-              <TextInputPassword value=""></TextInputPassword>
+            
+            <div css={{marginBottom: 32}}>
+              <PasswordField ref={passwordRef}></PasswordField>
             </div>
             <Button
             color="main"
@@ -56,22 +80,14 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             >로그인</Button>
           </form>
         <div css={{ flexDirection: 'column', position:"relative"}}>
-          <div css={{marginBottom: 16}}>
-          <Button appearance="outline">
-            <span css={{ position: 'absolute', left:22 }}>
-              <Icon name="kakao" size={24}></Icon>
-            </span>
+          <Button appearance="outline" css={{marginBottom: 16}}>
+            <span css={{ position: 'absolute', left:22 }}><Icon name="kakao" size={24}/></span>
             카카오로 시작하기
           </Button>
-          </div>
-          <div css={{marginBottom: 16}}>
-          <Button appearance="outline">
-            <span css={{ position: 'absolute', left:22, width: "fit-content"}}>
-              <Icon name="naver" size={24}></Icon>
-            </span>
+          <Button appearance="outline" css={{marginBottom: 16}}>
+            <span css={{ position: 'absolute', left:22, width: "fit-content"}}><Icon name="naver" size={24}/></span>
             네이버로 시작하기
           </Button>
-          </div>
           <div css={{ marginTop: 16, alignItems: 'center' }}>
             <Link href="/signup" passHref>
             <a

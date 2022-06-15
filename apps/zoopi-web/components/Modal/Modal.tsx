@@ -26,10 +26,6 @@ export const Modal = ({
     onClose();
   },[onClose])
 
-  const handleClickClose: MouseEventHandler = useCallback(() => {
-      onClose();
-  },[onClose]);
-
   return (
     <div
       onClick={handleOverlayClick}

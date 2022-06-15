@@ -34,7 +34,7 @@ export const Icon = ({
     }}>
       <ReactSVG 
         css={{display: "inline-block"}}
-        src={`icons/${name}.svg`}
+        src={`/icons/${name}.svg`}
         beforeInjection={(svg) => {
           svg.setAttribute('style', `width: ${size}px; height: ${size}px;`)
         }}
