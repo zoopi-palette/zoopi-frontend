@@ -9,6 +9,7 @@ export default {
     type: 'dog',
     bloodType: ['DEA1-', 'DEA1.1'],
     name: '뽀숑',
+    image: '/images/ex-dog-animalchip.png',
   },
 } as ComponentMeta<typeof AnimalChip>;
 

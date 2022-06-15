@@ -2,7 +2,6 @@ import { useTheme } from '@emotion/react';
 import { Css } from '@web/styles/theme';
 import React, { useMemo, MouseEventHandler } from 'react';
 import Image from 'next/image';
-import ExDog from '../../assets/image/ex-dog-animalchip.png';
 
 export type Dog = {
   type: 'dog';
@@ -25,7 +24,7 @@ export const AnimalChip = ({
   type,
   bloodType,
   name,
-  image,
+  image = '/images/ex-dog-animalchip.png',
   isSelected,
   onClick,
   ...rest
@@ -51,7 +50,7 @@ export const AnimalChip = ({
 
   return (
     <button onClick={onClick} css={css} {...rest}>
-      {image && <Image width={48} height={48} alt="animal-image" src={ExDog} />}
+      {image && <Image width={48} height={48} alt="animal-image" src={image} />}
       {!image && (
         <div
           css={{
