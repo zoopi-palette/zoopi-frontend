@@ -30,7 +30,13 @@ export const Icon = ({
       color: color ? color : theme.colors["grey-90"],
       fontSize: 0,
     }}>
-      <ReactSVG src={`icons/${name}.svg`} width={size} height={size}/>
+      <ReactSVG 
+        src={`icons/${name}.svg`}
+        beforeInjection={(svg) => {
+          svg.setAttribute('style', `width: ${size}px; height: ${size}px;`)
+        }}
+        width={size} height={size}
+        />
     </span>
   )
 }
