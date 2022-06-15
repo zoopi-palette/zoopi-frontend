@@ -11,9 +11,9 @@ export default {
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => (
-  <div css={{width: "100%", height: "100vh"}}>
-    <Modal {...args}></Modal>
-  </div>
+    <div css={{width: "100%", height: "100vh"}}>
+      <Modal {...args}></Modal>
+    </div>
 );
 
 export const Default = Template.bind({});
