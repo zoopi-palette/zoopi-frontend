@@ -47,19 +47,15 @@ export const Modal = ({
         display: "flex", 
         flexDirection:"column", 
         alignItems: "stretch",
+        justifyContent: "space-between",
         backgroundColor: theme.colors.white,
         width: width ? width : "fit-content",
         height: height? height: "fit-content",
         minWidth: 386,
         minHeight: 200,
         borderRadius: "12px",
-        padding: "20px 40px 20px 20px"
+        padding: 20,
         }}>
-          <button 
-          onClick={handleClickClose} 
-          css={{ position:"absolute",display:"inline-block", top: 20, right: 20, marginLeft: 10}}>
-            <Icon name={'close'} size={15} />
-          </button>
           {children}
         </section>
       </div>

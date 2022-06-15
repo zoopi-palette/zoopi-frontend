@@ -27,7 +27,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
       width="560px"
     >
       <div css={{ padding: '80px', flexDirection: 'column' }}>
-        <div css={{justifyContent: "center", marginBottom: 50}}>
+        <button 
+          onClick={onClose} 
+          css={{ position:"absolute",display:"inline-block", top: 20, right: 20, marginLeft: 10}}>
+            <Icon name={'close'} size={15} />
+        </button>
+        <div css={{justifyContent: "center", marginBottom: 50}} aria-label="zoopi logo">
           <Logo height={59} width={157}></Logo>
         </div>
         <form
