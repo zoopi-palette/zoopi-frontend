@@ -47,9 +47,5 @@ export const GlobalStyle = () => {
         outline: none;
       }
     }
-    :focus-visible{
-      border: 2px solid #bd2626;
-      border-radius: 5px;
-    }
 `}/>)
 }
