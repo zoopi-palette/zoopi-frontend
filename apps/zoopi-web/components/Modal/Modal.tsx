@@ -1,6 +1,6 @@
 import {useTheme} from "@emotion/react"
-import React, {useCallback, MouseEventHandler, ReactNode, useRef} from "react"
-import {Icon} from "@web/components/Icon"
+import React, {useCallback, MouseEventHandler, ReactNode, useState, useRef, useEffect} from "react"
+import {createPortal} from "react-dom";
 
 export type ModalProps = {
   onClose: ()=>void,
@@ -16,21 +16,27 @@ export const Modal = ({
   children,
 }: ModalProps) => {
   const theme = useTheme();
+  const [mount,setMount] = useState(false);
   const modalInsideRef = useRef<HTMLDivElement>(null)
 
   const handleOverlayClick: MouseEventHandler = useCallback((event)=>{
     const isClickedOverlay = (event.target instanceof Node) && !modalInsideRef.current?.contains(event.target)
-
     if (!isClickedOverlay) return;
 
     onClose();
   },[onClose])
 
-  return (
+  useEffect(()=>{
+    setMount(true)
+  },[])
+
+  return mount ? (createPortal(
     <div
       onClick={handleOverlayClick}
       css={{
         position:"fixed",
+        top:0,
+        left:0,
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.6)",
@@ -54,6 +60,6 @@ export const Modal = ({
         }}>
           {children}
         </section>
-      </div>
-  )
+      </div>,document.querySelector("#root-modal") as Element))
+      : <></>;
 }

@@ -1,7 +1,6 @@
 import { ModalLogin } from "@web/components/ModalLogin"
 import { ModalConfirm } from "@web/components/ModalConfirm"
 import { Button } from "@web/components/Button"
-import { Icon } from "@web/components/Icon"
 import { useState } from 'react'
 
 const ModalTestPage = () => {

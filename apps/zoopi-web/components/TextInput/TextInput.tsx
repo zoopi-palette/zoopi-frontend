@@ -1,5 +1,5 @@
 import {useTheme} from "@emotion/react"
-import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallback, useMemo, useState,MutableRefObject,forwardRef} from "react"
+import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallback, useMemo, useState} from "react"
 import {Icon} from "@web/components/Icon"
 import {Css, CssObject} from "@web/styles/theme"
 
@@ -15,7 +15,6 @@ export type TextInputProps = {
   clearDisabled?: boolean
   right?: ReactNode,
   forwardedRef?: string,
-  displayName?:string,
 }
 
 export const TextInput = ({
@@ -29,7 +28,6 @@ export const TextInput = ({
   right,
   type = "text",
   forwardedRef,
-  displayName,
   ...rest
 }: TextInputProps) => {
   const theme = useTheme()
