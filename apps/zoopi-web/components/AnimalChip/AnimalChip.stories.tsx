@@ -5,7 +5,11 @@ export default {
   title: 'atoms/AnimalChip',
   component: AnimalChip,
   argTypes: {},
-  args: {},
+  args: {
+    type: 'dog',
+    bloodType: ['DEA1-', 'DEA1.1'],
+    name: '뽀숑',
+  },
 } as ComponentMeta<typeof AnimalChip>;
 
 const Template: ComponentStory<typeof AnimalChip> = (args) => (
