@@ -26,7 +26,7 @@ export const ModalConfirm = ({
   return (
     <Modal onClose={onClose}>
       <header css={{display: "flex", alignItems: "baseline"}}>
-        <h1 css={{
+        <h1 id="dialogTitle" css={{
           flexBasis: "100%",
           flexWrap: "wrap",
           fontSize: 18,
@@ -37,14 +37,14 @@ export const ModalConfirm = ({
         }}>
           {title}
         </h1>
-          <button onClick={onClose}>
+          <button onClick={onClose} autoFocus>
             <Icon name={'close'} size={15} />
           </button>
       </header>
       <main css={{
         marginBottom: 16
         }}>
-        <p css={{
+        <p id="dialogDesc" css={{
         whiteSpace: "pre-line",
         fontSize: 16,
         fontWeight: 400,

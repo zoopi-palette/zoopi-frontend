@@ -41,7 +41,8 @@ export const Modal = ({
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.6)",
       }}>
-      <section ref={modalInsideRef} css={{
+      <section ref={modalInsideRef} role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc" aria-live='polite' aria-atomic="true" aria-modal="true"
+      css={{
         position: "absolute",
         top: "50%",
         left: "50%",

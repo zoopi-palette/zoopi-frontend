@@ -28,8 +28,8 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
     console.log(email, password)
   },[])
 
-  const ForwardedComponent = <T, >(Component:ElementType,props: T, displayName:string) => {
-    const forwardedRef = (_:T, ref:MutableRefObject<HTMLInputElement>) => {
+  const ForwardedComponent = <T, >(Component:ElementType, props: T, displayName:string) => {
+    const forwardedRef = (_, ref:MutableRefObject<HTMLInputElement>) => {
       return <Component forwardedRef={ref} {...props}/>;
     };
     forwardedRef.displayName=displayName;
@@ -39,18 +39,15 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   const EmailField = ForwardedComponent<TextInputProps>(TextInput,{label:"이메일", placeholder:"sample@example.co.kr", type:"email"},"EmailInput");
   const PasswordField = ForwardedComponent<TextInputPasswordProps>(TextInputPassword,{},"PasswordInput");
 
-  useEffect(()=>{
-    emailRef?.current?.focus();
-  },[])
-
   return (
     <Modal
       onClose={onClose}
       height= "713px"
       width="560px"
     >
-      <div css={{ padding: '80px', flexDirection: 'column' }}>
+      <div css={{ padding: '80px', flexDirection: 'column'}} aria-label="loginForm">
         <button 
+          autoFocus
           onClick={onClose} 
           css={{ position:"absolute",display:"inline-block", top: 20, right: 20, marginLeft: 10}}>
             <Icon name={'close'} size={15} />

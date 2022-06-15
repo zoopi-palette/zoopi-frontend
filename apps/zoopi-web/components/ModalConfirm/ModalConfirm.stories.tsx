@@ -1,5 +1,5 @@
 import {ComponentStory, ComponentMeta} from "@storybook/react";
-
+import React, {useState} from "react"
 import {ModalConfirm} from "./ModalConfirm";
 
 export default {
@@ -18,11 +18,16 @@ export default {
   }
 } as ComponentMeta<typeof ModalConfirm>;
 
-const Template: ComponentStory<typeof ModalConfirm> = (args) => (
-  <div css={{width: "100%", height: "100%"}}>
-    <ModalConfirm {...args} />
-  </div>
-);
+const Template: ComponentStory<typeof ModalConfirm> = (args) => {
+  const [isModalShow, setIsModalShow] = useState(false);
+
+  return <>
+  <button onClick={()=>setIsModalShow(true)}>Open Modal</button>
+  {isModalShow && <div css={{width: "100%", height: "100%"}}>
+  <ModalConfirm {...args} onClose={()=>setIsModalShow(false)} />
+  </div>}
+  </>
+}
 
 export const Default = Template.bind({});
 Default.args = {
