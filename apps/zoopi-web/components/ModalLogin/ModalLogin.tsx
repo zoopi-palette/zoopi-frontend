@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {useTheme} from '@emotion/react';
 import {Modal} from '@web/components/Modal';
 import {Icon} from "@web/components/Icon"
@@ -5,7 +6,6 @@ import {Logo} from "@web/components/Logo"
 import {Button} from "@web/components/Button"
 import {TextInput} from "@web/components/TextInput"
 import {TextInputPassword} from "@web/components/TextInputPassword"
-import { useCallback } from 'react';
 
 export type ModalLoginProps = {
   onClose: () => void;
@@ -20,13 +20,9 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
     flexDirction: "column"
   }
 
-  const handleCloseClick = useCallback(()=>{
-    onClose();
-  },[onClose])
-
   return (
     <Modal
-      onClose={handleCloseClick}
+      onClose={onClose}
       height= "713px"
       width="560px"
     >
@@ -54,21 +50,25 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             css={{ fontWeight: 700 }}
             >로그인</Button>
           </form>
-        <div css={{ flexDirection: 'column', position:"relative", "*": {marginBottom: 16} }}>
+        <div css={{ flexDirection: 'column', position:"relative"}}>
+          <div css={{marginBottom: 16}}>
           <Button appearance="outline">
             <span css={{ position: 'absolute', left:22 }}>
               <Icon name="kakao" size={24}></Icon>
             </span>
             카카오로 시작하기
           </Button>
+          </div>
+          <div css={{marginBottom: 16}}>
           <Button appearance="outline">
             <span css={{ position: 'absolute', left:22, width: "fit-content"}}>
               <Icon name="naver" size={24}></Icon>
             </span>
             네이버로 시작하기
           </Button>
+          </div>
           <div css={{ marginTop: 16, alignItems: 'center' }}>
-            {/* <Link href="/signIn" passHref> */}
+            <Link href="/signup" passHref>
             <a
               css={{
                 width: BUTTON_WIDTH / 2,
@@ -80,14 +80,14 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             >
               회원가입
             </a>
-            {/* </Link> */}
+            </Link>
             <hr
               css={{
                 height: 16,
                 color: theme.colors['grey-50'],
               }}
             ></hr>
-            {/* <Link href="/signUp" passHref> */}
+            <Link href="/find/password" passHref>
             <a
               css={{
                 width: BUTTON_WIDTH / 2,
@@ -99,7 +99,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             >
               비밀번호 찾기
             </a>
-            {/* </Link> */}
+            </Link>
           </div>
         </div>
       </div>

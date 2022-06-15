@@ -16,12 +16,12 @@ export const Modal = ({
   children,
 }: ModalProps) => {
   const theme = useTheme();
-  const overlayRef = useRef<HTMLDivElement>(null)
+  const modalInsideRef = useRef<HTMLDivElement>(null)
 
   const handleOverlayClick: MouseEventHandler = useCallback((event)=>{
-    const isClickedInside = (event.target instanceof Node) && overlayRef.current?.contains(event.target)
+    const isClickedOverlay = (event.target instanceof Node) && !modalInsideRef.current?.contains(event.target)
 
-    if (isClickedInside) return;
+    if (!isClickedOverlay) return;
 
     onClose();
   },[onClose])
@@ -32,38 +32,36 @@ export const Modal = ({
 
   return (
     <div
-      ref={overlayRef}
       onClick={handleOverlayClick}
       css={{
         position:"fixed",
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.6)",
-      }}
-    ><section
-    css={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      display: "flex", 
-      flexDirection:"column", 
-      alignItems: "stretch",
-      backgroundColor: theme.colors.white,
-      width: width ? width : "fit-content",
-      height: height? height: "fit-content",
-      minHeight: 200,
-      borderRadius: "12px",
-      padding: 16
-    }}
-  >
-    <div 
-      onClick={handleClickClose} 
-      css={{ cursor: 'pointer', position:"absolute", top: 20, right: 20}}>
-      <Icon name={'close'} size={15} />
-    </div>
-    {children}
-  </section>
-    </div>
+      }}>
+      <section ref={modalInsideRef} css={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        display: "flex", 
+        flexDirection:"column", 
+        alignItems: "stretch",
+        backgroundColor: theme.colors.white,
+        width: width ? width : "fit-content",
+        height: height? height: "fit-content",
+        minWidth: 386,
+        minHeight: 200,
+        borderRadius: "12px",
+        padding: "20px 40px 20px 20px"
+        }}>
+          <button 
+          onClick={handleClickClose} 
+          css={{ position:"absolute",display:"inline-block", top: 20, right: 20, marginLeft: 10}}>
+            <Icon name={'close'} size={15} />
+          </button>
+          {children}
+        </section>
+      </div>
   )
 }
