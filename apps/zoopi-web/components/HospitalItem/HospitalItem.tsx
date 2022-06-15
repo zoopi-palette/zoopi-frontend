@@ -1,25 +1,39 @@
 import { useTheme } from '@emotion/react';
-import React, { ReactNode } from 'react';
+import { Hospital } from '@web/stores/data/types';
+import { MouseEventHandler, ReactNode } from 'react';
 
 export type HospitalItemProps = {
   children?: ReactNode;
+  id: number;
   name: string;
   address: string;
-  divider: boolean;
+  divider?: boolean;
   isSelected: boolean;
-  onClick?: () => void;
+  handleSelectedHospital: (hospital: Hospital) => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const HospitalItem = ({
   children,
+  id,
   name,
   address,
-  divider,
+  divider = true,
   isSelected,
+  handleSelectedHospital,
   onClick,
   ...rest
 }: HospitalItemProps) => {
   const theme = useTheme();
+
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+    onClick?.(event);
+    handleSelectedHospital({
+      id,
+      name,
+      address,
+    });
+  };
 
   return (
     <li
@@ -30,6 +44,7 @@ export const HospitalItem = ({
       }}
     >
       <button
+        onClick={handleClick}
         css={{
           display: 'inline-flex',
           flexDirection: 'column',
