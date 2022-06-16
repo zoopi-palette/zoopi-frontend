@@ -42,25 +42,25 @@ export const Modal = ({
         backgroundColor: "rgba(0,0,0,0.6)",
       }}>
       <section ref={modalInsideRef} role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc" aria-live='polite' aria-atomic="true" aria-modal="true"
-      css={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        display: "flex", 
-        flexDirection:"column", 
-        alignItems: "stretch",
-        justifyContent: "space-between",
-        backgroundColor: theme.colors.white,
-        width: width ? width : "fit-content",
-        height: height? height: "fit-content",
-        minWidth: 386,
-        minHeight: 200,
-        borderRadius: "12px",
-        padding: 20,
+        css={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          display: "flex", 
+          flexDirection:"column", 
+          alignItems: "stretch",
+          justifyContent: "space-between",
+          backgroundColor: theme.colors.white,
+          width: width ? width : "fit-content",
+          height: height? height: "fit-content",
+          minWidth: 386,
+          minHeight: 200,
+          borderRadius: "12px",
+          padding: 20,
         }}>
-          {children}
-        </section>
-      </div>,document.querySelector("#root-modal") as Element))
-      : <></>;
+        {children}
+      </section>
+    </div>,document.querySelector("#root-modal") as Element))
+    : <></>;
 }

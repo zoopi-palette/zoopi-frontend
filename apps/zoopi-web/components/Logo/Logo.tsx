@@ -1,6 +1,6 @@
 import {useTheme} from "@emotion/react"
 import React from "react"
-import { ReactSVG } from 'react-svg'
+import {ReactSVG} from "react-svg"
 
 export type LogoProps = {
   height: number,
@@ -19,12 +19,12 @@ export const Logo = ({
     }}>
       <ReactSVG 
         css={{display: "inline-block"}}
-        src={`/zoopi-logo.svg`}
+        src={"/zoopi-logo.svg"}
         beforeInjection={(svg) => {
-          svg.setAttribute('style', `width: ${width}px; height: ${height}px;`)
+          svg.setAttribute("style", `width: ${width}px; height: ${height}px;`)
         }}
         width={width} height={height}
-        />
+      />
     </span>
   )
 }

@@ -1,6 +1,6 @@
-import {Modal} from '@web/components/Modal';
-import {Icon} from '@web/components/Icon';
 import {Button} from "@web/components/Button"
+import {Icon} from "@web/components/Icon";
+import {Modal} from "@web/components/Modal";
 
 export type ModalConfirmProps = {
   onClose: () => void;
@@ -22,7 +22,7 @@ export const ModalConfirm = ({
   cancle,
   title,
   contents,
- }: ModalConfirmProps) => {
+}: ModalConfirmProps) => {
   return (
     <Modal onClose={onClose}>
       <header css={{display: "flex", alignItems: "baseline"}}>
@@ -37,29 +37,29 @@ export const ModalConfirm = ({
         }}>
           {title}
         </h1>
-          <button onClick={onClose} autoFocus>
-            <Icon name={'close'} size={15} />
-          </button>
+        <button onClick={onClose} autoFocus>
+          <Icon name={"close"} size={15} />
+        </button>
       </header>
       <main css={{
         marginBottom: 16
-        }}>
+      }}>
         <p id="dialogDesc" css={{
-        whiteSpace: "pre-line",
-        fontSize: 16,
-        fontWeight: 400,
-        lineHeight: "150%",
-        letterSpacing: "-0.002em",
-        textAlign: "left",}}>{contents}</p>
+          whiteSpace: "pre-line",
+          fontSize: 16,
+          fontWeight: 400,
+          lineHeight: "150%",
+          letterSpacing: "-0.002em",
+          textAlign: "left",}}>{contents}</p>
       </main>
       <div css={{
         position: "relative", 
         width: "100%", 
         "*": {width: "100%"},
         "*:not(:first-of-type)":{marginLeft: 5}}}>
-          {cancle && 
+        {cancle && 
           <div><Button color="gray" appearance="outline" onClick={cancle.onCancleClick}>{cancle.cancleMessage || "취소"}</Button></div>}
-          {confirm && 
+        {confirm && 
           <div><Button color="main" onClick={confirm.onConfirmClick}>{confirm.confirmMessage || "확인"}</Button></div>}
       </div>
     </Modal>
