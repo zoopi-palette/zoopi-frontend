@@ -16,7 +16,7 @@ export const Modal = ({
   children,
 }: ModalProps) => {
   const theme = useTheme();
-  const [mount,setMount] = useState(false);
+  const [isMount,setIsMount] = useState(false);
   const modalInsideRef = useRef<HTMLDivElement>(null)
 
   const handleOverlayClick: MouseEventHandler = useCallback((event)=>{
@@ -27,10 +27,10 @@ export const Modal = ({
   },[onClose])
 
   useEffect(()=>{
-    setMount(true)
+    setIsMount(true)
   },[])
 
-  return mount ? (createPortal(
+  return isMount ? (createPortal(
     <div
       onClick={handleOverlayClick}
       css={{
