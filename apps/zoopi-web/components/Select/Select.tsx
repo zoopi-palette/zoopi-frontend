@@ -1,4 +1,4 @@
-import {ChangeEventHandler, ReactNode, useCallback} from "react";
+import {ChangeEventHandler, ReactNode} from "react";
 
 export type SelectProps = {
   children?: ReactNode;

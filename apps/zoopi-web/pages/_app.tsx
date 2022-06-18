@@ -1,10 +1,10 @@
-import { AppProps } from 'next/app';
 import {ThemeProvider, GlobalStyle} from "@web/styles"
+import {AppProps} from "next/app";
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function CustomApp({Component, pageProps}: AppProps) {
   return (
     <ThemeProvider>
-    <GlobalStyle />
+      <GlobalStyle />
       <Component {...pageProps} />
     </ThemeProvider>
   );

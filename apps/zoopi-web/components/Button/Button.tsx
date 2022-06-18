@@ -1,5 +1,5 @@
-import {MouseEventHandler, ReactNode, useCallback} from "react"
 import {Css, CssObject, Theme} from "@web/styles/theme"
+import {MouseEventHandler, ReactNode, useCallback} from "react"
 
 export type ButtonProps = {
   children?: ReactNode

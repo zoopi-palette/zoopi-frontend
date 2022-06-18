@@ -1,6 +1,6 @@
 import {useTheme} from "@emotion/react"
 import React from "react"
-import { ReactSVG } from 'react-svg'
+import {ReactSVG} from "react-svg"
 
 export type IconName = |
   "arrow-back" |
@@ -36,10 +36,10 @@ export const Icon = ({
         css={{display: "inline-block"}}
         src={`/icons/${name}.svg`}
         beforeInjection={(svg) => {
-          svg.setAttribute('style', `width: ${size}px; height: ${size}px;`)
+          svg.setAttribute("style", `width: ${size}px; height: ${size}px;`)
         }}
         width={size} height={size}
-        />
+      />
     </span>
   )
 }

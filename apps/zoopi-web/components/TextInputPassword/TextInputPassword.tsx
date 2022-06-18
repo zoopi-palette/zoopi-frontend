@@ -1,8 +1,8 @@
 import {useTheme} from "@emotion/react"
-import {useState} from "react"
 import {Icon} from "@web/components/Icon"
 import {TextInput} from "@web/components/TextInput"
 import {TextInputProps} from "@web/components/TextInput/TextInput"
+import {useState} from "react"
 
 export type TextInputPasswordProps = TextInputProps
 
