@@ -1,8 +1,8 @@
-import { GlobalStyle, ThemeProvider } from "../styles"
 import React from "react"
+import {GlobalStyle, ThemeProvider} from "../styles"
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: {argTypesRegex: "^on[A-Z].*"},
   controls: {
     matchers: {
       color: /(background|color)$/i,

@@ -18,7 +18,7 @@ module.exports = {
   },
   // ref: https://github.com/storybookjs/storybook/issues/7540#issuecomment-934216060
   babel: async (options) => {
-    options.presets.push('@emotion/babel-preset-css-prop')
+    options.presets.push("@emotion/babel-preset-css-prop")
     return options
   },
 }
