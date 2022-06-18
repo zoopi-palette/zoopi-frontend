@@ -5,7 +5,7 @@ import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallba
 
 export type TextInputProps = {
   children?: ReactNode
-  value: string
+  value?: string
   placeholder?: string
   onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>)=>void
   onBlur?: FocusEventHandler<HTMLInputElement>
@@ -13,7 +13,8 @@ export type TextInputProps = {
   label?: string | null
   type?: "email" | "password" | "text";
   clearDisabled?: boolean
-  right?: ReactNode
+  right?: ReactNode,
+  forwardedRef?: string,
 }
 
 export const TextInput = ({
@@ -26,6 +27,7 @@ export const TextInput = ({
   clearDisabled = false,
   right,
   type = "text",
+  forwardedRef,
   ...rest
 }: TextInputProps) => {
   const theme = useTheme()
@@ -67,7 +69,7 @@ export const TextInput = ({
     setLocalValue("")
     onChange?.("")
   },[onChange])
-  
+
   return (
     <label css={{
       display: "inline-flex",
@@ -91,6 +93,7 @@ export const TextInput = ({
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleFocus}
+        ref={forwardedRef}
         css={css}
       />
       <div css={{position: "absolute", right: 0, bottom: 6}}>
