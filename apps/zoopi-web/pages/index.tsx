@@ -1,12 +1,13 @@
 import {useTheme} from "@emotion/react";
 import {AnimalChip} from "@web/components/AnimalChip";
+import {FooterBar} from "@web/components/FooterBar";
 import {Icon} from "@web/components/Icon";
 
 const HomePage = () => {
   const theme = useTheme();
 
   return (
-    <div>
+    <div css={{flexDirection: "column", width: "100%"}}>
       <div
         css={{
           color: theme.colors.main,
@@ -21,6 +22,7 @@ const HomePage = () => {
         type="dog"
         bloodType={["DEA1-", "DEA1.1"]}
       />
+      <FooterBar/>
     </div>
   );
 };
