@@ -19,6 +19,7 @@ export const FooterBar = () => {
       height: 168,
       padding: "31px",
       justifyContent: "center",
+      justifySelf: "end"
     }}>
       <div css={{
         flexDirection: "column",
