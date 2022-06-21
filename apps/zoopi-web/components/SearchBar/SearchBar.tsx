@@ -11,7 +11,6 @@ import { Icon } from '@web/components/Icon';
 import { Css } from '@web/styles/theme';
 
 export type SearchBarProps = {
-  children: ReactNode;
   value: string;
   placeholder?: string;
   onChange?: (value?: string, event?: ChangeEvent<HTMLInputElement>) => void;
@@ -21,7 +20,6 @@ export type SearchBarProps = {
 };
 
 export const SearchBar = ({
-  children,
   onChange,
   value,
   placeholder,
