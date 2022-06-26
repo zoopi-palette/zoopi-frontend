@@ -80,7 +80,7 @@
       "options": {
         "commands": [
           {
-            "command": "npx chromatic --project-token=$ZOOPI_WEB_CHROMATIC_TOKEN -d=apps/zoopi-web/.storybook/dist"
+            "command": "npx chromatic --project-token=$ZOOPI_WEB_CHROMATIC_TOKEN -d=apps/zoopi-web/.storybook/dist --exit-zero-on-changes"
           }
         ]
       }
