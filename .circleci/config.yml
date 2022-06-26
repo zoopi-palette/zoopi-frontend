@@ -1,0 +1,27 @@
+version: 2.1
+orbs:
+  nx: nrwl/nx@1.5.0
+jobs:
+  build:
+    docker:
+      - image: 'cimg/node:14.17-browsers'
+    environment:
+      MAIN_BRANCH_NAME: master
+    steps:
+      - checkout
+      - run:
+          command: yarn install --frozen-lockfile
+          name: Install dependencies
+      - nx/set-shas:
+          main-branch-name: master
+      - run:
+          command: >-
+            yarn nx affected --target=build-storybook --parallel
+            --max-parallel=3
+          name: Build Storybook
+      - run:
+          command: >-
+            yarn nx affected --base=master --target=chromatic --parallel
+            --max-parallel=3
+          name: Run Chromatics
+workflows: null
