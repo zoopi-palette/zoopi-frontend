@@ -24,4 +24,7 @@ jobs:
             yarn nx affected --base=master --target=chromatic --parallel
             --max-parallel=3
           name: Run Chromatics
-workflows: null
+workflows:
+  chromatic:
+    jobs:
+      - chromatic
