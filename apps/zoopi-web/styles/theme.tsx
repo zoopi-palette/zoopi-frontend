@@ -16,6 +16,7 @@ const palette = {
 const theme = {
   colors: {
     ...palette,
+    background: "#F5F5F7",
     main: "#FF3E3D",
     sub: "#3B91F5",
     error: "#FF6A3A",

@@ -12,7 +12,9 @@ export type IconName = |
   "eye" |
   "search" |
   "kakao" |
-  "naver"
+  "naver" | 
+  "play-store" | 
+  "apple-store"
 
 export type IconProps = {
   name: IconName

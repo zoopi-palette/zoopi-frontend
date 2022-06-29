@@ -10,8 +10,13 @@ export const GlobalStyle = () => {
       box-sizing: border-box;
     }
 
+    #__next {
+      height: 100%;
+    }
+
     body {
       width:100%;
+      height: 100%;
       overflow-x:hidden;
       font-family: 'Spoqa Han Sans Neo', sans-serif;
     }
@@ -20,6 +25,7 @@ export const GlobalStyle = () => {
       font-size: 16px;
       scroll-behavior: smooth;
       width:100%;
+      height: 100%;
       overflow-x:hidden;
     }
 

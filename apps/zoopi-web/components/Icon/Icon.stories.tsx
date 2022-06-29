@@ -3,7 +3,7 @@ import React from "react";
 
 import {Icon, IconName} from "./Icon";
 
-const iconNames: IconName[] = ["arrow-back", "arrow-right", "check-circle", "circle", "close-circle", "close", "eye", "search"]
+const iconNames: IconName[] = ["arrow-back", "arrow-right", "check-circle", "circle", "close-circle", "close", "eye", "search", "play-store", "apple-store"]
 
 export default {
   title: "atoms/Icon",
