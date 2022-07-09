@@ -1,0 +1,16 @@
+{
+  "ignorePatterns": ["**/*"],
+  "extends": [
+    "plugin:@nrwl/nx/react-typescript",
+    "next",
+    "next/core-web-vitals",
+    "../../.eslintrc.json"
+  ],
+  "rules": {
+    "@next/next/no-html-link-for-pages": ["error", "apps/zoopi-web/pages"],
+    "react-hooks/exhaustive-deps": "error"
+  },
+  "env": {
+    "jest": true
+  }
+}

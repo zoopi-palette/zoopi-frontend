@@ -1,7 +1,7 @@
 import {useTheme} from "@emotion/react";
-import {Css} from "@web/styles/theme";
 import Image from "next/image";
 import React, {useMemo, MouseEventHandler} from "react";
+import {Css} from "@web/styles/theme";
 
 export type Dog = {
   type: "dog";
