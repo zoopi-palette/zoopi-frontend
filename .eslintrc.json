@@ -2,40 +2,41 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nrwl/nx"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
-          "error",
+  "extends": ["plugin:@nrwl/nx/typescript", "plugin:@nrwl/nx/javascript"],
+  "rules": {
+    // nx
+    "@nrwl/nx/enforce-module-boundaries": [
+      "error",
+      {
+        "enforceBuildableLibDependency": true,
+        "allow": [
+          "@web"
+        ],
+        "depConstraints": [
           {
-            "enforceBuildableLibDependency": true,
-            "allow": [
-              "@web"
-            ],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
-            ]
+            "sourceTag": "*",
+            "onlyDependOnLibsWithTags": ["*"]
           }
         ]
       }
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {
-        "@typescript-eslint/no-empty-interface": [
-          "off"
-        ]
+    ],
+    // spacing
+    "indent": ["error", 2],
+    "quotes": ["error", "double"] ,
+    "array-bracket-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "never"],
+    "no-multi-spaces": "error",
+    // less stric
+    "@typescript-eslint/no-empty-interface": "off",
+    // sorting
+    "import/order":  [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "alphabetize": {
+          "order": "asc"
+        }
       }
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
-      "rules": {}
-    }
-  ]
+    ]
+  }
 }
