@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {useTheme} from "@emotion/react"
 import {useState} from "react"
 import {Icon} from "@web/components/Icon"

@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {ChangeEventHandler, ReactNode} from "react";
 
 export type SelectProps = {

@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {useTheme} from "@emotion/react";
 import {AnimalChip} from "@web/components/AnimalChip";
 import {Icon} from "@web/components/Icon";

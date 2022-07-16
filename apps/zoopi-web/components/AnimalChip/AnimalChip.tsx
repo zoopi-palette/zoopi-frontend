@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {useTheme} from "@emotion/react";
 import Image from "next/image";
 import React, {useMemo, MouseEventHandler} from "react";

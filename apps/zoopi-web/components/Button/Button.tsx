@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {MouseEventHandler, ReactNode, useCallback} from "react"
 import {Css, CssObject, Theme} from "@web/styles/theme"
 

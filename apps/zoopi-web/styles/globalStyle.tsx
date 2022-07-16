@@ -1,5 +1,3 @@
-
-/* @jsxImportSource @emotion/react */
 import {Global, css} from "@emotion/react"
 import reset from "emotion-reset"
 

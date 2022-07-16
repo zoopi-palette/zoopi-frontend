@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {useTheme} from "@emotion/react";
 import Link from "next/link"
 import {useCallback,FormEventHandler,useRef,forwardRef,MutableRefObject,ElementType, useEffect} from "react";

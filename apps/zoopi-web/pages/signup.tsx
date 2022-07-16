@@ -1,4 +1,3 @@
-/* @jsxImportSource @emotion/react */
 import {useTheme} from "@emotion/react"
 
 const SignupPage = () => {
