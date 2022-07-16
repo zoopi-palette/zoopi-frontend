@@ -33,7 +33,7 @@ export const TextInput = ({
   const theme = useTheme()
 
   const [localValue, setLocalValue] = useState("")
-  
+
   const css: Css = useMemo(()=>{
     return ({
       fontSize: "1rem",
@@ -104,7 +104,7 @@ export const TextInput = ({
             css={{
               display: (value || localValue) ? "inline-flex" : "none",
               cursor: "pointer",
-              paddingRight: 2, 
+              paddingRight: 2,
               paddingLeft: 2
             }}
           >

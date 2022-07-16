@@ -39,5 +39,5 @@ export const AllIcons: ComponentStory<typeof Icon> = (props) => {
         </div>
       ))}
     </div>
-  ) 
+  )
 }

@@ -51,7 +51,7 @@ export const Button = ({
   },[disabled, onClick])
 
   return (
-    <button 
+    <button
       onClick={handleClick}
       {...rest}
       css={css}

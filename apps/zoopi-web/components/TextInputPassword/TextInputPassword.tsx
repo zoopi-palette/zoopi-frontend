@@ -12,7 +12,7 @@ export const TextInputPassword = ({
   const theme = useTheme()
 
   const [type, setType] = useState<TextInputProps["type"]>("password")
-  
+
   const handleEyeClick = ()=>{
     setType(prev => prev === "password" ? "text" : "password")
   }

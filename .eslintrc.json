@@ -22,10 +22,10 @@
     ],
     // spacing
     "indent": ["error", 2],
-    "quotes": ["error", "double"] ,
+    "no-multi-spaces": "error",
+    "no-trailing-spaces": "error",
     "array-bracket-spacing": ["error", "never"],
     "object-curly-spacing": ["error", "never"],
-    "no-multi-spaces": "error",
     // less stric
     "@typescript-eslint/no-empty-interface": "off",
     // sorting
@@ -37,6 +37,8 @@
           "order": "asc"
         }
       }
-    ]
+    ],
+    // others
+    "quotes": ["error", "double"]
   }
 }

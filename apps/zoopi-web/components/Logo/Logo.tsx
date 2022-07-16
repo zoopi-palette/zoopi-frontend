@@ -11,13 +11,13 @@ export const Logo = ({
   height, width
 }: LogoProps) => {
   const theme = useTheme()
-  
+
   return (
     <span css={{
       color: theme.colors["grey-90"],
       fontSize: 0,
     }}>
-      <ReactSVG 
+      <ReactSVG
         css={{display: "inline-block"}}
         src={"/zoopi-logo.svg"}
         beforeInjection={(svg) => {

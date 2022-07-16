@@ -35,7 +35,7 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
     forwardedRef.displayName=displayName;
     return forwardRef(forwardedRef);
   };
-  
+
   const EmailField = ForwardedComponent<TextInputProps>(TextInput,{label:"이메일", placeholder:"sample@example.co.kr", type:"email"},"EmailInput");
   const PasswordField = ForwardedComponent<TextInputPasswordProps>(TextInputPassword,{},"PasswordInput");
 
@@ -46,9 +46,9 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
       width="560px"
     >
       <div css={{padding: "80px", flexDirection: "column"}} aria-label="loginForm">
-        <button 
+        <button
           autoFocus
-          onClick={onClose} 
+          onClick={onClose}
           css={{position:"absolute",display:"inline-block", top: 20, right: 20, marginLeft: 10}}>
           <Icon name={"close"} size={15} />
         </button>
@@ -66,7 +66,7 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
           <div css={{marginBottom: 32}}>
             <EmailField ref={emailRef}></EmailField>
           </div>
-            
+
           <div css={{marginBottom: 32}}>
             <PasswordField ref={passwordRef}></PasswordField>
           </div>

@@ -26,13 +26,13 @@ export const Icon = ({
   name,
 }: IconProps) => {
   const theme = useTheme()
-  
+
   return (
     <span css={{
       color: color ? color : theme.colors["grey-90"],
       fontSize: 0,
     }}>
-      <ReactSVG 
+      <ReactSVG
         css={{display: "inline-block"}}
         src={`/icons/${name}.svg`}
         beforeInjection={(svg) => {

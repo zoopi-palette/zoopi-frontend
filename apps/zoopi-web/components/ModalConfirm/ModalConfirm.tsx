@@ -16,7 +16,7 @@ export type ModalConfirmProps = {
   contents: string,
 };
 
-export const ModalConfirm = ({ 
+export const ModalConfirm = ({
   onClose,
   confirm,
   cancle,
@@ -53,13 +53,13 @@ export const ModalConfirm = ({
           textAlign: "left",}}>{contents}</p>
       </main>
       <div css={{
-        position: "relative", 
-        width: "100%", 
+        position: "relative",
+        width: "100%",
         "*": {width: "100%"},
         "*:not(:first-of-type)":{marginLeft: 5}}}>
-        {cancle && 
+        {cancle &&
           <div><Button color="gray" appearance="outline" onClick={cancle.onCancleClick}>{cancle.cancleMessage || "취소"}</Button></div>}
-        {confirm && 
+        {confirm &&
           <div><Button color="main" onClick={confirm.onConfirmClick}>{confirm.confirmMessage || "확인"}</Button></div>}
       </div>
     </Modal>
