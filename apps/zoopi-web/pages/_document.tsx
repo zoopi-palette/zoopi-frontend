@@ -1,3 +1,4 @@
+/* @jsxImportSource @emotion/react */
 import Document, {Html, Head, Main,NextScript,DocumentContext} from "next/document";
 import React from "react";
 

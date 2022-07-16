@@ -1,3 +1,4 @@
+/* @jsxImportSource @emotion/react */
 import {ComponentStory, ComponentMeta} from "@storybook/react";
 
 import {Modal} from "./Modal";

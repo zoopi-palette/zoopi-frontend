@@ -1,3 +1,4 @@
+/* @jsxImportSource @emotion/react */
 import {Button} from "@web/components/Button"
 import {Icon} from "@web/components/Icon";
 import {Modal} from "@web/components/Modal";
