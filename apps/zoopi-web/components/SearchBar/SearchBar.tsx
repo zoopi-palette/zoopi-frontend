@@ -1,4 +1,4 @@
-import {useTheme} from "@emotion/react";
+import { useTheme } from '@emotion/react';
 import {
   ReactNode,
   ChangeEvent,
@@ -6,9 +6,9 @@ import {
   useMemo,
   useCallback,
   useState,
-} from "react";
-import {Icon} from "@web/components/Icon";
-import {Css} from "@web/styles/theme";
+} from 'react';
+import { Icon } from '@web/components/Icon';
+import { Css } from '@web/styles/theme';
 
 export type SearchBarProps = {
   value: string;
@@ -30,25 +30,26 @@ export const SearchBar = ({
 }: SearchBarProps) => {
   const theme = useTheme();
 
-  const [localValue, setLocalValue] = useState("");
+  const [localValue, setLocalValue] = useState('');
 
-  const css: Css = useMemo(() => {
-    return {
+  const css: Css = useMemo(
+    () => ({
       paddingTop: 15,
       paddingBottom: 15,
       paddingLeft: 50,
       borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: "#D8DCE2",
+      borderStyle: 'solid',
+      borderColor: '#D8DCE2',
       borderRadius: 12,
-      fontSize: "1.125rem",
+      fontSize: '1.125rem',
 
-      ":focus": {
+      ':focus': {
         borderWidth: 2,
         borderColor: theme.colors.sub,
       },
-    };
-  }, [theme]);
+    }),
+    [theme]
+  );
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setLocalValue(event.currentTarget.value);
@@ -56,17 +57,17 @@ export const SearchBar = ({
   };
 
   const handleClearClick = useCallback(() => {
-    setLocalValue("");
-    onChange?.("");
+    setLocalValue('');
+    onChange?.('');
   }, [onChange]);
 
   return (
     <div
       css={{
-        display: "inline-flex",
-        flexDirection: "column",
-        width: "100%",
-        position: "relative",
+        display: 'inline-flex',
+        flexDirection: 'column',
+        width: '100%',
+        position: 'relative',
       }}
     >
       <input
@@ -76,32 +77,34 @@ export const SearchBar = ({
         css={css}
         {...rest}
       />
-      <div css={{position: "absolute", left: 14, top: 14}}>
+      <div css={{ position: 'absolute', left: 14, top: 14 }}>
         {right}
         {clearDisabled ? null : (
           <button
+            type="button"
             onClick={handleClearClick}
             css={{
-              display: "inline-flex",
+              display: 'inline-flex',
             }}
           >
-            <Icon name={"search"} color={theme.colors["grey-50"]} size={24} />
+            <Icon name="search" color={theme.colors['grey-50']} size={24} />
           </button>
         )}
       </div>
-      <div css={{position: "absolute", right: 21.86, top: 14}}>
+      <div css={{ position: 'absolute', right: 21.86, top: 14 }}>
         {right}
         {clearDisabled ? null : (
           <button
+            type="button"
             onClick={handleClearClick}
             css={{
-              display: value || localValue ? "inline-flex" : "none",
-              cursor: "pointer",
+              display: value || localValue ? 'inline-flex' : 'none',
+              cursor: 'pointer',
               paddingRight: 2,
               paddingLeft: 2,
             }}
           >
-            <Icon name={"close-circle"} color={theme.colors["grey-50"]} />
+            <Icon name="close-circle" color={theme.colors['grey-50']} />
           </button>
         )}
       </div>

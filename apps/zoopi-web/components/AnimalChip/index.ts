@@ -1,1 +1,1 @@
-export * from "./AnimalChip"
+export * from './AnimalChip';

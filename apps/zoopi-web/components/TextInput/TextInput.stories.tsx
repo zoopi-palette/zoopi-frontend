@@ -1,18 +1,19 @@
-import {ComponentStory, ComponentMeta} from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {TextInput} from "./TextInput";
+import { TextInput } from './TextInput';
 
 export default {
-  title: "atoms/TextInput",
+  title: 'atoms/TextInput',
   component: TextInput,
-  argTypes: {
-  },
+  argTypes: {},
   args: {
-    label: "label",
-    placeholder: "placeholder"
+    label: 'label',
+    placeholder: 'placeholder',
   },
 } as ComponentMeta<typeof TextInput>;
 
-const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args} />;
+const Template: ComponentStory<typeof TextInput> = (args) => (
+  <TextInput {...args} />
+);
 
 export const Default = Template.bind({});
