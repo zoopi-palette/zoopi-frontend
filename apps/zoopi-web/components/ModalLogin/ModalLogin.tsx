@@ -65,8 +65,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   return (
     <Modal onClose={onClose} height="600px" width="560px">
       <div
-        css={{ padding: '0 80px', flexDirection: 'column',justifyContent: 'center',
-        height: '100%' }}
+        css={{
+          padding: '0 80px',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          height: '100%',
+        }}
         aria-label="loginForm"
       >
         <button
@@ -113,7 +117,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
         <div css={{ flexDirection: 'column', position: 'relative' }}>
           <Button appearance="outline" css={{ marginBottom: 16 }}>
             <span
-              css={{ position: 'absolute', left: 22, width: 'fit-content', color: theme.colors['grey-70'] }}
+              css={{
+                position: 'absolute',
+                left: 22,
+                width: 'fit-content',
+                color: theme.colors['grey-70'],
+              }}
             >
               <Icon name="naver" size={24} />
             </span>
@@ -142,6 +151,8 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
               }}
             />
             <Link href="/find/id" passHref>
+              {/* TODO: fix eslint error */}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 css={{
                   width: BUTTON_WIDTH / 2,
