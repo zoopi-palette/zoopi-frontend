@@ -6,10 +6,10 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "tsc-check": "tsc --project apps/zoopi-web/tsconfig.json",
-    "lint-fix": "nx run zoopi-web:lint --fix",
-    "prepare": "husky install",
-    "format": "prettier --write . && yarn run lint-fix"
+    "tsc": "tsc --project apps/zoopi-web/tsconfig.json",
+    "lint": "nx run zoopi-web:lint --fix",
+    "format": "prettier --write . && yarn run lint",
+    "prepare": "husky install"
   },
   "private": true,
   "lint-staged": {
