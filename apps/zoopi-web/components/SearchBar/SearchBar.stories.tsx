@@ -1,8 +1,8 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react";
-import {SearchBar} from "./SearchBar";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { SearchBar } from './SearchBar';
 
 export default {
-  title: "atoms/SearchBar",
+  title: 'atoms/SearchBar',
   component: SearchBar,
   argTypes: {},
   args: {},

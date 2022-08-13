@@ -1,13 +1,13 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react";
-import {Select} from "./Select";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Select } from './Select';
 
 export default {
-  title: "atoms/Select",
+  title: 'atoms/Select',
   component: Select,
   argTypes: {},
   args: {
-    id: "id",
-    name: "name",
+    id: 'id',
+    name: 'name',
   },
 } as ComponentMeta<typeof Select>;
 

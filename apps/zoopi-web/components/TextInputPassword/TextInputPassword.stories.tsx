@@ -1,16 +1,16 @@
-import {ComponentStory, ComponentMeta} from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {TextInputPassword} from "./TextInputPassword";
+import { TextInputPassword } from './TextInputPassword';
 
 export default {
-  title: "atoms/TextInputPassword",
+  title: 'atoms/TextInputPassword',
   component: TextInputPassword,
-  argTypes: {
-  },
-  args: {
-  },
+  argTypes: {},
+  args: {},
 } as ComponentMeta<typeof TextInputPassword>;
 
-const Template: ComponentStory<typeof TextInputPassword> = (args) => <TextInputPassword {...args} />;
+const Template: ComponentStory<typeof TextInputPassword> = (args) => (
+  <TextInputPassword {...args} />
+);
 
 export const Default = Template.bind({});

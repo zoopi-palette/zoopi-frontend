@@ -1,4 +1,4 @@
-import {ChangeEventHandler, ReactNode} from "react";
+import { ChangeEventHandler, ReactNode } from 'react';
 
 export type SelectProps = {
   children?: ReactNode;
@@ -17,9 +17,9 @@ export const Select = ({
   <div
     css={{
       borderWidth: 1,
-      borderStyle: "solid",
-      borderRadius: "22px",
-      borderColor: "#E6E7E9",
+      borderStyle: 'solid',
+      borderRadius: '22px',
+      borderColor: '#E6E7E9',
       paddingTop: 12,
       paddingRight: 11,
       paddingBottom: 13,
@@ -32,10 +32,10 @@ export const Select = ({
       id={id}
       onChange={onChange}
       {...rest}
-      css={{border: 0, color: "#393939", fontSize: 13, paddingRight: 4}}
+      css={{ border: 0, color: '#393939', fontSize: 13, paddingRight: 4 }}
     >
       {children}
       <option value="">{name}</option>
     </select>
   </div>
-)
+);

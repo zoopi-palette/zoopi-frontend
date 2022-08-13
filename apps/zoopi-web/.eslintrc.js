@@ -1,15 +1,12 @@
 module.exports = {
-  "extends": [
-    "../../eslint/next/.eslintrc.js"
-  ],
-  "ignorePatterns": ["!**/*"],
-  "rules": {
+  extends: ['../../eslint/next/.eslintrc.js'],
+  ignorePatterns: ['!**/*'],
+  rules: {},
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: 'apps/zoopi-web/tsconfig.json',
+      },
+    },
   },
-  "settings": {
-    "import/resolver": {
-      "typescript": {
-        "project": "apps/zoopi-web/tsconfig.json"
-      }
-    }
-  }
-}
+};

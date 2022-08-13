@@ -7,9 +7,15 @@
     "build": "nx build",
     "test": "nx test",
     "tsc-check": "tsc --project apps/zoopi-web/tsconfig.json",
-    "lint-fix": "nx run zoopi-web:lint --fix"
+    "lint-fix": "nx run zoopi-web:lint --fix",
+    "prepare": "husky install",
+    "format": "prettier --write . && yarn run lint-fix"
   },
   "private": true,
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/react": "11.9.0",
@@ -66,7 +72,9 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^8.0.1",
     "jest": "27.5.1",
+    "lint-staged": "^13.0.3",
     "nx": "14.1.9",
     "prettier": "^2.5.1",
     "react-test-renderer": "18.1.0",
