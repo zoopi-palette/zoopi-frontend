@@ -8,9 +8,9 @@ export type ModalConfirmProps = {
     onConfirmClick: () => void;
     confirmMessage?: string;
   };
-  cancle?: {
-    onCancleClick: () => void;
-    cancleMessage?: string;
+  cancel?: {
+    onCancelClick: () => void;
+    cancelMessage?: string;
   };
   title: string;
   contents: string;
@@ -19,7 +19,7 @@ export type ModalConfirmProps = {
 export const ModalConfirm = ({
   onClose,
   confirm,
-  cancle,
+  cancel,
   title,
   contents,
 }: ModalConfirmProps) => (
@@ -40,7 +40,7 @@ export const ModalConfirm = ({
         {title}
       </h1>
       <button type="button" onClick={onClose}>
-        <Icon name="close" size={15} />
+        <Icon name="close" size={24} />
       </button>
     </header>
     <main
@@ -70,14 +70,14 @@ export const ModalConfirm = ({
         '*:not(:first-of-type)': { marginLeft: 5 },
       }}
     >
-      {cancle && (
+      {cancel && (
         <div>
           <Button
             color="gray"
             appearance="outline"
-            onClick={cancle.onCancleClick}
+            onClick={cancel.onCancelClick}
           >
-            {cancle.cancleMessage || '취소'}
+            {cancel.cancelMessage || '취소'}
           </Button>
         </div>
       )}

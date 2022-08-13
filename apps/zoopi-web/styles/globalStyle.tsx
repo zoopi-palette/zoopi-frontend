@@ -47,6 +47,7 @@ export const GlobalStyle = () => (
       input {
         border: none;
         outline: none;
+        font-family: 'Spoqa Han Sans Neo', sans-serif;
         :focus-visible {
           outline: none;
         }
