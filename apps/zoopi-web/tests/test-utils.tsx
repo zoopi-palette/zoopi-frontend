@@ -2,14 +2,12 @@ import {render} from "@testing-library/react"
 import {ReactElement} from "react";
 import {ThemeProvider, GlobalStyle} from "@web/styles"
 
-function Providers({children}: {children: ReactElement}) {
-  return (
-    <ThemeProvider>
-      <GlobalStyle />
-      {children}
-    </ThemeProvider>
-  );
-}
+const Providers = ({children}: {children: ReactElement}) => (
+  <ThemeProvider>
+    <GlobalStyle />
+    {children}
+  </ThemeProvider>
+)
 
 type RenderParameters = Parameters<typeof render>
 

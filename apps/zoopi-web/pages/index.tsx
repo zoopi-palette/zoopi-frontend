@@ -14,7 +14,7 @@ const HomePage = () => {
       >
         Home
       </div>
-      <Icon name={"circle"} />
+      <Icon name="circle" />
       <AnimalChip
         isSelected={false}
         name="코코"
@@ -23,6 +23,6 @@ const HomePage = () => {
       />
     </div>
   );
-};
+}
 
 export default HomePage;

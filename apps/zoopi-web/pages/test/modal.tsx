@@ -9,15 +9,15 @@ const ModalTestPage = () => {
   return (
     <div>
       {isModalShow && <ModalLogin
-        onClose={()=>{setIsModalShow(false)}}></ModalLogin>}
+        onClose={()=>{setIsModalShow(false)}} />}
 
       {isConfirmShow && <ModalConfirm
         onClose={()=>{setIsConfirmShow(false)}}
         title="링크발송"
         contents={"가입하신 이메일로 링크를 발송했습니다. \n 인증확인 후 비밀번호를 변경하세요!"}
-        confirm={{onConfirmClick : ()=>{/** */}}}></ModalConfirm>}
-      <button onClick={()=>{setIsModalShow(true)}}>{"Modal Show"}</button>
-      <button onClick={()=>{setIsConfirmShow(true)}}>{"Confirm Show"}</button>
+        confirm={{onConfirmClick : ()=>{/** */}}} />}
+      <button type="button" onClick={()=>{setIsModalShow(true)}}>Modal Show</button>
+      <button type="button" onClick={()=>{setIsConfirmShow(true)}}>Confirm Show</button>
     </div>
   )
 }

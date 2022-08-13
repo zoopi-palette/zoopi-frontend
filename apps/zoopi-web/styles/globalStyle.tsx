@@ -1,8 +1,7 @@
 import {Global, css} from "@emotion/react"
 import reset from "emotion-reset"
 
-export const GlobalStyle = () => {
-  return (<Global styles={css`
+export const GlobalStyle = () => (<Global styles={css`
     @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
     ${reset}
     
@@ -48,4 +47,3 @@ export const GlobalStyle = () => {
       }
     }
 `}/>)
-}

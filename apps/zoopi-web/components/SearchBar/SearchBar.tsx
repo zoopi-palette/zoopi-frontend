@@ -32,23 +32,21 @@ export const SearchBar = ({
 
   const [localValue, setLocalValue] = useState("");
 
-  const css: Css = useMemo(() => {
-    return {
-      paddingTop: 15,
-      paddingBottom: 15,
-      paddingLeft: 50,
-      borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: "#D8DCE2",
-      borderRadius: 12,
-      fontSize: "1.125rem",
+  const css: Css = useMemo(() => ({
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 50,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#D8DCE2",
+    borderRadius: 12,
+    fontSize: "1.125rem",
 
-      ":focus": {
-        borderWidth: 2,
-        borderColor: theme.colors.sub,
-      },
-    };
-  }, [theme]);
+    ":focus": {
+      borderWidth: 2,
+      borderColor: theme.colors.sub,
+    },
+  }), [theme]);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setLocalValue(event.currentTarget.value);
@@ -80,12 +78,13 @@ export const SearchBar = ({
         {right}
         {clearDisabled ? null : (
           <button
+            type="button"
             onClick={handleClearClick}
             css={{
               display: "inline-flex",
             }}
           >
-            <Icon name={"search"} color={theme.colors["grey-50"]} size={24} />
+            <Icon name="search" color={theme.colors["grey-50"]} size={24} />
           </button>
         )}
       </div>
@@ -93,6 +92,7 @@ export const SearchBar = ({
         {right}
         {clearDisabled ? null : (
           <button
+            type="button"
             onClick={handleClearClick}
             css={{
               display: value || localValue ? "inline-flex" : "none",
@@ -101,10 +101,10 @@ export const SearchBar = ({
               paddingLeft: 2,
             }}
           >
-            <Icon name={"close-circle"} color={theme.colors["grey-50"]} />
+            <Icon name="close-circle" color={theme.colors["grey-50"]} />
           </button>
         )}
       </div>
     </div>
   );
-};
+}

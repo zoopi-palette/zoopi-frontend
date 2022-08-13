@@ -31,25 +31,23 @@ export const AnimalChip = ({
 }: AnimalChipProps) => {
   const theme = useTheme();
 
-  const css: Css = useMemo(() => {
-    return {
-      width: 219,
-      height: 72,
-      borderRadius: 12,
-      borderWidth: isSelected ? 2 : 1,
-      borderStyle: "solid",
-      borderColor: isSelected ? theme.colors.sub : "#E8EBF0",
-      background: theme.colors.white,
-      cursor: "pointer",
-      display: "flex",
-      alignItems: "center",
-      padding: 12,
-      gap: 12,
-    };
-  }, [theme, isSelected]);
+  const css: Css = useMemo(() => ({
+    width: 219,
+    height: 72,
+    borderRadius: 12,
+    borderWidth: isSelected ? 2 : 1,
+    borderStyle: "solid",
+    borderColor: isSelected ? theme.colors.sub : "#E8EBF0",
+    background: theme.colors.white,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    padding: 12,
+    gap: 12,
+  }), [theme, isSelected]);
 
   return (
-    <button onClick={onClick} css={css} {...rest}>
+    <button type="button" onClick={onClick} css={css} {...rest}>
       {image && <Image width={48} height={48} alt="animal-image" src={image} />}
       {!image && (
         <div
@@ -59,7 +57,7 @@ export const AnimalChip = ({
             background: "#D9D9D9",
             borderRadius: "50%",
           }}
-        ></div>
+        />
       )}
       <div
         css={{
@@ -118,4 +116,4 @@ export const AnimalChip = ({
       </div>
     </button>
   );
-};
+}

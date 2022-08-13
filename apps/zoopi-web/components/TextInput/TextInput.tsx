@@ -1,5 +1,5 @@
 import {useTheme} from "@emotion/react"
-import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallback, useMemo, useState} from "react"
+import {ChangeEvent, ChangeEventHandler, FocusEventHandler, ReactNode, useCallback, useMemo, useId, useState} from "react"
 import {Icon} from "@web/components/Icon"
 import {Css, CssObject} from "@web/styles/theme"
 
@@ -31,26 +31,25 @@ export const TextInput = ({
   ...rest
 }: TextInputProps) => {
   const theme = useTheme()
+  const componentId = useId();
 
   const [localValue, setLocalValue] = useState("")
 
-  const css: Css = useMemo(()=>{
-    return ({
-      fontSize: "1rem",
-      color: theme.colors["grey-90"],
-      borderWidth: 1,
-      borderBottomStyle: "solid",
-      borderColor: theme.colors["grey-40"],
-      paddingBottom: "6px",
-      "::placeholder": {
-        padding: 0,
-        color: theme.colors["grey-40"],
-      },
-      ":focus": {
-        borderColor: theme.colors["grey-90"],
-      },
-    } as CssObject)
-  },[theme])
+  const css: Css = useMemo(()=>({
+    fontSize: "1rem",
+    color: theme.colors["grey-90"],
+    borderWidth: 1,
+    borderBottomStyle: "solid",
+    borderColor: theme.colors["grey-40"],
+    paddingBottom: "6px",
+    "::placeholder": {
+      padding: 0,
+      color: theme.colors["grey-40"],
+    },
+    ":focus": {
+      borderColor: theme.colors["grey-90"],
+    },
+  } as CssObject),[theme])
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback((event)=>{
     setLocalValue(event.currentTarget.value)
@@ -71,22 +70,25 @@ export const TextInput = ({
   },[onChange])
 
   return (
-    <label css={{
-      display: "inline-flex",
-      flexDirection: "column",
-      width: "100%",
-      position: "relative"
-    }}>
+    <label
+      htmlFor={componentId}
+      css={{
+        display: "inline-flex",
+        flexDirection: "column",
+        width: "100%",
+        position: "relative"
+      }}>
       {label && (
-        <span css={theme => ({
+        <span css={{
           fontSize: "0.875rem",
           color: theme.colors["grey-50"],
           marginBottom: "7px"
-        })}>
+        }}>
           {label}
         </span>
       )}
       <input
+        id={componentId}
         type={type}
         {...rest}
         value={value || localValue}
@@ -100,6 +102,7 @@ export const TextInput = ({
         {right}
         {clearDisabled ? null : (
           <button
+            type="button"
             onClick={handleClearClick}
             css={{
               display: (value || localValue) ? "inline-flex" : "none",
@@ -108,7 +111,7 @@ export const TextInput = ({
               paddingLeft: 2
             }}
           >
-            <Icon name={"close-circle"} color={theme.colors["grey-50"]}/>
+            <Icon name="close-circle" color={theme.colors["grey-50"]}/>
           </button>
         )}
       </div>

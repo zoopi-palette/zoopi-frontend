@@ -1,7 +1,8 @@
-import {MouseEventHandler, ReactNode, useCallback} from "react"
+import {ButtonHTMLAttributes, MouseEventHandler, ReactNode, useCallback} from "react"
 import {Css, CssObject, Theme} from "@web/styles/theme"
 
 export type ButtonProps = {
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"]
   children?: ReactNode
   className?: string
   disabled?: boolean
@@ -15,6 +16,7 @@ export type ButtonAppearance = "filled" | "outline"
 
 export const Button = ({
   children,
+  type = "button",
   disabled = false,
   color = "gray",
   appearance = "filled",
@@ -52,6 +54,8 @@ export const Button = ({
 
   return (
     <button
+      // eslint-disable-next-line react/button-has-type
+      type={type}
       onClick={handleClick}
       {...rest}
       css={css}

@@ -24,8 +24,8 @@ export const TextInputPassword = ({
       label={label}
       type={type}
       right={(
-        <button css={{paddingRight: 2, paddingLeft: 2, cursor: "pointer"}} onClick={handleEyeClick}>
-          <Icon name={"eye"} color={theme.colors["grey-60"]}/>
+        <button type="button" css={{paddingRight: 2, paddingLeft: 2, cursor: "pointer"}} onClick={handleEyeClick}>
+          <Icon name="eye" color={theme.colors["grey-60"]}/>
         </button>
       )}
       {...rest}

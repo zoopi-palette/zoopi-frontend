@@ -1,8 +1,8 @@
-{
+module.exports = {
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nrwl/nx"],
-  "extends": ["plugin:@nrwl/nx/typescript", "plugin:@nrwl/nx/javascript"],
+  "extends": ["airbnb", "plugin:@nrwl/nx/typescript", "plugin:@nrwl/nx/javascript"],
   "rules": {
     // nx
     "@nrwl/nx/enforce-module-boundaries": [
@@ -28,7 +28,7 @@
     "object-curly-spacing": ["error", "never"],
     // less stric
     "@typescript-eslint/no-empty-interface": "off",
-    // sorting
+    // import
     "import/order":  [
       "error",
       {
@@ -38,6 +38,19 @@
         }
       }
     ],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never",
+        "mjs": "never"
+      }
+    ],
+    'import/no-extraneous-dependencies': 'off',
+    'import/prefer-default-export': 'off',
     // others
     "quotes": ["error", "double"]
   }

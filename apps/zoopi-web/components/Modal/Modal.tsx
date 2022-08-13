@@ -31,6 +31,8 @@ export const Modal = ({
   },[])
 
   return isMount ? (createPortal(
+    // TODO: uncomment and fix eslint errors
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       onClick={handleOverlayClick}
       css={{
@@ -52,8 +54,8 @@ export const Modal = ({
           alignItems: "stretch",
           justifyContent: "space-between",
           backgroundColor: theme.colors.white,
-          width: width ? width : "fit-content",
-          height: height? height: "fit-content",
+          width: width || "fit-content",
+          height: height || "fit-content",
           minWidth: 386,
           minHeight: 200,
           borderRadius: "12px",
@@ -62,5 +64,5 @@ export const Modal = ({
         {children}
       </section>
     </div>,document.querySelector("#root-modal") as Element))
-    : <></>;
+    : null;
 }

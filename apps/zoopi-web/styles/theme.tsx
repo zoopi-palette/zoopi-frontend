@@ -33,10 +33,8 @@ export type Theme = typeof theme
 export type Css = InterpolationWithTheme<Theme>
 export type CssObject = ObjectInterpolation<undefined>
 
-export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
-  return (
-    <EmotionThemeProvider theme={theme}>
-      {children}
-    </EmotionThemeProvider>
-  )
-}
+export const ThemeProvider = ({children}: {children: React.ReactNode}) => (
+  <EmotionThemeProvider theme={theme}>
+    {children}
+  </EmotionThemeProvider>
+)

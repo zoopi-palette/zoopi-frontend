@@ -29,7 +29,7 @@ export const Icon = ({
 
   return (
     <span css={{
-      color: color ? color : theme.colors["grey-90"],
+      color: color || theme.colors["grey-90"],
       fontSize: 0,
     }}>
       <ReactSVG

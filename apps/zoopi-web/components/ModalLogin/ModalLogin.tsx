@@ -1,6 +1,6 @@
 import {useTheme} from "@emotion/react";
 import Link from "next/link"
-import {useCallback,FormEventHandler,useRef,forwardRef,MutableRefObject,ElementType, useEffect} from "react";
+import {useCallback,FormEventHandler,useRef,forwardRef,MutableRefObject,ElementType} from "react";
 import {Button} from "@web/components/Button"
 import {Icon} from "@web/components/Icon"
 import {Logo} from "@web/components/Logo"
@@ -25,13 +25,12 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
     const email = emailRef?.current?.value;
     const password = passwordRef?.current?.value;
 
+    // eslint-disable-next-line no-console
     console.log(email, password)
   },[])
 
   const ForwardedComponent = <T, >(Component:ElementType, props: T, displayName:string) => {
-    const forwardedRef = (_, ref:MutableRefObject<HTMLInputElement>) => {
-      return <Component forwardedRef={ref} {...props}/>;
-    };
+    const forwardedRef = (_, ref:MutableRefObject<HTMLInputElement>) => <Component forwardedRef={ref} {...props}/>;
     forwardedRef.displayName=displayName;
     return forwardRef(forwardedRef);
   };
@@ -47,13 +46,15 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
     >
       <div css={{padding: "80px", flexDirection: "column"}} aria-label="loginForm">
         <button
-          autoFocus
+          type="button"
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus // TODO: fix eslint error
           onClick={onClose}
           css={{position:"absolute",display:"inline-block", top: 20, right: 20, marginLeft: 10}}>
-          <Icon name={"close"} size={15} />
+          <Icon name="close" size={15} />
         </button>
         <div css={{justifyContent: "center", marginBottom: 50}} aria-label="zoopi logo">
-          <Logo height={59} width={157}></Logo>
+          <Logo height={59} width={157} />
         </div>
         <form onSubmit={handleSubmitLogin}
           css={{
@@ -64,11 +65,11 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
           }}
         >
           <div css={{marginBottom: 32}}>
-            <EmailField ref={emailRef}></EmailField>
+            <EmailField ref={emailRef} />
           </div>
 
           <div css={{marginBottom: 32}}>
-            <PasswordField ref={passwordRef}></PasswordField>
+            <PasswordField ref={passwordRef} />
           </div>
           <Button
             color="main"
@@ -87,6 +88,8 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
           </Button>
           <div css={{marginTop: 16, alignItems: "center"}}>
             <Link href="/signup" passHref>
+              {/* TODO: fix eslint error */}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 css={{
                   width: BUTTON_WIDTH / 2,
@@ -104,8 +107,10 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
                 height: 16,
                 color: theme.colors["grey-50"],
               }}
-            ></hr>
+            />
             <Link href="/find/password" passHref>
+              {/* TODO: fix eslint error */}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 css={{
                   width: BUTTON_WIDTH / 2,
@@ -123,4 +128,4 @@ export const ModalLogin = ({onClose}: ModalLoginProps) => {
       </div>
     </Modal>
   );
-};
+}

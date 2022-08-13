@@ -42,29 +42,27 @@ Gray.args = {
   children: "gray",
 };
 
-export const AllButtons = () => {
-  return (
-    <div css={{
-      display: "flex",
-      flexDirection: "row"
-    }}>
-      {buttonColors.map(color=>(
-        <div key={color} css={{display: "flex", flexDirection: "column"}}>{buttonApperances.map(appearance=>(
-          <div key={`${color}-${appearance}`} css={{display: "flex", flexDirection: "column", padding: 8}}>
-            <div css={{padding: 8}} >
-              <Button color={color} appearance={appearance}>
-                {`${color}-${appearance}`}
-              </Button>
-            </div>
-            <div css={{padding: 8}} >
-              <Button color={color} appearance={appearance} disabled>
-                {"disabled"}
-              </Button>
-            </div>
+export const AllButtons = () => (
+  <div css={{
+    display: "flex",
+    flexDirection: "row"
+  }}>
+    {buttonColors.map(color=>(
+      <div key={color} css={{display: "flex", flexDirection: "column"}}>{buttonApperances.map(appearance=>(
+        <div key={`${color}-${appearance}`} css={{display: "flex", flexDirection: "column", padding: 8}}>
+          <div css={{padding: 8}} >
+            <Button color={color} appearance={appearance}>
+              {`${color}-${appearance}`}
+            </Button>
           </div>
-        ))}</div>
-      ))}
-    </div>
-  )
-}
+          <div css={{padding: 8}} >
+            <Button color={color} appearance={appearance} disabled>
+                disabled
+            </Button>
+          </div>
+        </div>
+      ))}</div>
+    ))}
+  </div>
+)
 

@@ -12,6 +12,7 @@ module.exports = {
   "framework": "@storybook/react",
   "staticDirs": ["../public"],
   webpackFinal: async config => {
+    // eslint-disable-next-line no-param-reassign
     config.resolve.alias["@web"] = path.resolve(__dirname, "../");
 
     return config

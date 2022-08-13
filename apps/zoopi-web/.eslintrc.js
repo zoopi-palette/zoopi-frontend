@@ -1,6 +1,6 @@
-{
+module.exports = {
   "extends": [
-    "../../eslint/next/.eslintrc.json"
+    "../../eslint/next/.eslintrc.js"
   ],
   "ignorePatterns": ["!**/*"],
   "rules": {

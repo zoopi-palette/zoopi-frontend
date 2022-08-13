@@ -26,18 +26,16 @@ Close.args = {
   name: "close",
 };
 
-export const AllIcons: ComponentStory<typeof Icon> = (props) => {
-  return (
-    <div css={{
-      display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap",
-    }}>
-      {iconNames.map(name=>(
-        <div key={name} css={{padding: "4px"}}>
-          <Icon {...props} name={name}/>
-        </div>
-      ))}
-    </div>
-  )
-}
+export const AllIcons: ComponentStory<typeof Icon> = (props) => (
+  <div css={{
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  }}>
+    {iconNames.map(name=>(
+      <div key={name} css={{padding: "4px"}}>
+        <Icon {...props} name={name}/>
+      </div>
+    ))}
+  </div>
+)

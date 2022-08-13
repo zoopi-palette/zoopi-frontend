@@ -17,7 +17,7 @@ test("don't trigger onClick when it's disabled", ()=>{
   const handleClick = jest.fn();
   const BUTTON_TEXT = "BUTTON"
 
-  render(<Button disabled={true} onClick={handleClick}>{BUTTON_TEXT}</Button>)
+  render(<Button disabled onClick={handleClick}>{BUTTON_TEXT}</Button>)
 
   const button = screen.getByRole("button", {name: BUTTON_TEXT})
   fireEvent.click(button)
