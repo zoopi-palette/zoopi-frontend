@@ -1,30 +1,32 @@
 import { useTheme } from '@emotion/react';
 import Image from 'next/image';
-import React, { useMemo, MouseEventHandler } from 'react';
+import { useMemo, MouseEventHandler } from 'react';
 import { Css } from '@web/styles/theme';
 
 export type Dog = {
-  type: 'dog';
+  animalType: 'dog';
   bloodType: ['DEA1-', 'DEA1.1'];
 };
 
 export type Cat = {
-  type: 'cat';
+  animalType: 'cat';
   bloodType: ['A'];
 };
 
 export type AnimalChipProps = (Dog | Cat) & {
-  name: string;
-  image?: string;
+  animalName: string;
+  avatar?: string;
+  disabled?: boolean;
   isSelected: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const AnimalChip = ({
-  type,
+  animalType,
   bloodType,
-  name,
-  image = '/images/ex-dog-animalchip.png',
+  animalName,
+  avatar = '/images/ex-dog-animalchip.png',
+  disabled = false,
   isSelected,
   onClick,
   ...rest
@@ -51,8 +53,10 @@ export const AnimalChip = ({
 
   return (
     <button type="button" onClick={onClick} css={css} {...rest}>
-      {image && <Image width={48} height={48} alt="animal-image" src={image} />}
-      {!image && (
+      {avatar && (
+        <Image width={48} height={48} alt="반려동물의 사진" src={avatar} />
+      )}
+      {!avatar && (
         <div
           css={{
             width: '48px',
@@ -84,7 +88,7 @@ export const AnimalChip = ({
               fontSize: '1.125rem',
             }}
           >
-            {name}
+            {animalName}
           </span>
           <span
             css={{
@@ -95,7 +99,7 @@ export const AnimalChip = ({
               borderRadius: 4,
             }}
           >
-            {type === 'dog' ? '강아지' : '고양이'}
+            {animalType === 'dog' ? '강아지' : '고양이'}
           </span>
         </div>
         <div
