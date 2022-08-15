@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react';
+import { useState } from 'react';
 import { AnimalChip } from '@web/components/AnimalChip';
 import { Icon } from '@web/components/Icon';
-import { useState } from 'react';
 
 const HomePage = () => {
   const theme = useTheme();

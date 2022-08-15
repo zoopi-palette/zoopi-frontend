@@ -64,7 +64,7 @@ export const AnimalChip = ({
   }, [disabled, isSelected, theme]);
 
   return (
-    <button onClick={onClick} css={css} {...rest}>
+    <button type="button" onClick={onClick} css={css} {...rest}>
       {avatar && (
         <Image width={48} height={48} alt="반려동물의 사진" src={avatar} />
       )}
