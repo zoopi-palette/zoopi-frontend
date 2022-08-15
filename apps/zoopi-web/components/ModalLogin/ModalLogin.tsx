@@ -63,9 +63,14 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   );
 
   return (
-    <Modal onClose={onClose} height="713px" width="560px">
+    <Modal onClose={onClose} height="600px" width="560px">
       <div
-        css={{ padding: '80px', flexDirection: 'column' }}
+        css={{
+          padding: '0 80px',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          height: '100%',
+        }}
         aria-label="loginForm"
       >
         <button
@@ -81,7 +86,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             marginLeft: 10,
           }}
         >
-          <Icon name="close" size={15} />
+          <Icon name="close" size={24} />
         </button>
         <div
           css={{ justifyContent: 'center', marginBottom: 50 }}
@@ -93,7 +98,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
           onSubmit={handleSubmitLogin}
           css={{
             width: '100%',
-            marginBottom: 32,
+            marginBottom: 16,
             display: 'flex',
             flexDirection: 'column',
           }}
@@ -111,14 +116,13 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
         </form>
         <div css={{ flexDirection: 'column', position: 'relative' }}>
           <Button appearance="outline" css={{ marginBottom: 16 }}>
-            <span css={{ position: 'absolute', left: 22 }}>
-              <Icon name="kakao" size={24} />
-            </span>
-            카카오로 시작하기
-          </Button>
-          <Button appearance="outline" css={{ marginBottom: 16 }}>
             <span
-              css={{ position: 'absolute', left: 22, width: 'fit-content' }}
+              css={{
+                position: 'absolute',
+                left: 22,
+                width: 'fit-content',
+                color: theme.colors['grey-70'],
+              }}
             >
               <Icon name="naver" size={24} />
             </span>
@@ -138,6 +142,27 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
                 }}
               >
                 회원가입
+              </a>
+            </Link>
+            <hr
+              css={{
+                height: 16,
+                color: theme.colors['grey-50'],
+              }}
+            />
+            <Link href="/find/id" passHref>
+              {/* TODO: fix eslint error */}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a
+                css={{
+                  width: BUTTON_WIDTH / 2,
+                  padding: '13px 0',
+                  fontSize: 14,
+                  textAlign: 'center',
+                  color: theme.colors['grey-60'],
+                }}
+              >
+                아이디 찾기
               </a>
             </Link>
             <hr

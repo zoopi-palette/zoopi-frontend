@@ -10,8 +10,8 @@ export default {
     confirm: {
       confirmMessage: '확인',
     },
-    cancle: {
-      cancleMessage: '취소',
+    cancel: {
+      cancelMessage: '취소',
     },
     title: '링크 발송',
     contents:
