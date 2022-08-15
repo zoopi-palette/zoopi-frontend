@@ -25,7 +25,7 @@ export const AnimalChip = ({
   animalType,
   bloodType,
   animalName,
-  avatar = '/images/ex-dog-animalchip.png',
+  avatar,
   disabled = false,
   isSelected,
   onClick,
@@ -33,26 +33,38 @@ export const AnimalChip = ({
 }: AnimalChipProps) => {
   const theme = useTheme();
 
-  const css: Css = useMemo(
-    () => ({
+  const css: Css = useMemo(() => {
+    const disabledCss: Css = {
+      ...(disabled
+        ? {
+            cursor: 'default',
+          }
+        : {
+            outlineWidth: isSelected ? 2 : 1,
+            outlineColor: isSelected
+              ? theme.colors.sub
+              : theme.colors['grey-30'],
+          }),
+    };
+
+    return {
       width: 219,
       height: 72,
       borderRadius: 12,
-      borderWidth: isSelected ? 2 : 1,
-      borderStyle: 'solid',
-      borderColor: isSelected ? theme.colors.sub : '#E8EBF0',
       background: theme.colors.white,
-      cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       padding: 12,
       gap: 12,
-    }),
-    [theme, isSelected]
-  );
+      outlineStyle: 'solid',
+      outlineWidth: 1,
+      outlineColor: theme.colors['grey-30'],
+      ...disabledCss,
+    };
+  }, [disabled, isSelected, theme]);
 
   return (
-    <button type="button" onClick={onClick} css={css} {...rest}>
+    <button onClick={onClick} css={css} {...rest}>
       {avatar && (
         <Image width={48} height={48} alt="반려동물의 사진" src={avatar} />
       )}
@@ -84,7 +96,7 @@ export const AnimalChip = ({
           <span
             css={{
               fontWeight: 'bold',
-              color: '#1A1E27',
+              color: theme.colors['grey-90'],
               fontSize: '1.125rem',
             }}
           >
@@ -92,8 +104,8 @@ export const AnimalChip = ({
           </span>
           <span
             css={{
-              background: 'rgba(255, 62, 61, 0.12)',
-              color: theme.colors.main,
+              background: theme.colors.sub,
+              color: theme.colors['grey-10'],
               fontSize: '0.625rem',
               padding: 4,
               borderRadius: 4,
@@ -112,7 +124,7 @@ export const AnimalChip = ({
             <span
               key={blood}
               css={{
-                color: '#8E95A3',
+                color: theme.colors['grey-60'],
                 fontSize: '0.875rem',
               }}
             >
