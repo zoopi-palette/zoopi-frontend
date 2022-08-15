@@ -17,8 +17,8 @@ const HomePage = () => {
       <Icon name="circle" />
       <AnimalChip
         isSelected={false}
-        name="코코"
-        type="dog"
+        animalName="코코"
+        animalType="dog"
         bloodType={['DEA1-', 'DEA1.1']}
       />
     </div>
