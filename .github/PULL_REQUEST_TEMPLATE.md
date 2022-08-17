@@ -11,5 +11,5 @@
 
 ## Checklist
 - [ ] `yarn test`
-- [ ] `yarn tsc-check`
-- [ ] `yarn lint-fix`
+- [ ] `yarn tsc`
+- [ ] `yarn lint`
