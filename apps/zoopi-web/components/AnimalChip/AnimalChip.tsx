@@ -50,8 +50,8 @@ export const AnimalChip = ({
   );
 
   return (
-    <button type="button" onClick={onClick} css={css} {...rest}>
-      {image && <Image width={48} height={48} alt="animal-image" src={image} />}
+    <button type='button' onClick={onClick} css={css} {...rest}>
+      {image && <Image width={48} height={48} alt='animal-image' src={image} />}
       {!image && (
         <div
           css={{

@@ -127,7 +127,7 @@ export const TextInput = ({
         {right}
         {clearDisabled ? null : (
           <button
-            type="button"
+            type='button'
             onClick={handleClearClick}
             css={{
               display: value || localValue ? 'inline-flex' : 'none',
@@ -136,7 +136,7 @@ export const TextInput = ({
               paddingLeft: 2,
             }}
           >
-            <Icon name="close-circle" color={theme.colors['grey-50']} />
+            <Icon name='close-circle' color={theme.colors['grey-50']} />
           </button>
         )}
       </div>

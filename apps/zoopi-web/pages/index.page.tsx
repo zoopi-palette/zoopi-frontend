@@ -14,11 +14,11 @@ const HomePage = () => {
       >
         Home
       </div>
-      <Icon name="circle" />
+      <Icon name='circle' />
       <AnimalChip
         isSelected={false}
-        name="코코"
-        type="dog"
+        name='코코'
+        type='dog'
         bloodType={['DEA1-', 'DEA1.1']}
       />
     </div>

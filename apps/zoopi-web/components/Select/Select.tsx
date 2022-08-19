@@ -35,7 +35,7 @@ export const Select = ({
       css={{ border: 0, color: '#393939', fontSize: 13, paddingRight: 4 }}
     >
       {children}
-      <option value="">{name}</option>
+      <option value=''>{name}</option>
     </select>
   </div>
 );

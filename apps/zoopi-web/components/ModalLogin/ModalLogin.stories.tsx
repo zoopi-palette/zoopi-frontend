@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof ModalLogin> = (args) => {
 
   return (
     <>
-      <button type="button" onClick={() => setIsModalShow(true)}>
+      <button type='button' onClick={() => setIsModalShow(true)}>
         Open Modal
       </button>
       {isModalShow && (

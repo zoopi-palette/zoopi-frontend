@@ -8,7 +8,8 @@
     "test": "nx test",
     "tsc": "tsc --project apps/zoopi-web/tsconfig.json",
     "lint": "nx run zoopi-web:lint --fix",
-    "format": "prettier --write . && yarn run lint",
+    "prettier": "prettier --write .",
+    "format": "yarn run prettier && yarn run lint",
     "prepare": "husky install"
   },
   "private": true,

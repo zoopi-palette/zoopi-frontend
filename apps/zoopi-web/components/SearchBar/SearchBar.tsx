@@ -81,13 +81,13 @@ export const SearchBar = ({
         {right}
         {clearDisabled ? null : (
           <button
-            type="button"
+            type='button'
             onClick={handleClearClick}
             css={{
               display: 'inline-flex',
             }}
           >
-            <Icon name="search" color={theme.colors['grey-50']} size={24} />
+            <Icon name='search' color={theme.colors['grey-50']} size={24} />
           </button>
         )}
       </div>
@@ -95,7 +95,7 @@ export const SearchBar = ({
         {right}
         {clearDisabled ? null : (
           <button
-            type="button"
+            type='button'
             onClick={handleClearClick}
             css={{
               display: value || localValue ? 'inline-flex' : 'none',
@@ -104,7 +104,7 @@ export const SearchBar = ({
               paddingLeft: 2,
             }}
           >
-            <Icon name="close-circle" color={theme.colors['grey-50']} />
+            <Icon name='close-circle' color={theme.colors['grey-50']} />
           </button>
         )}
       </div>
