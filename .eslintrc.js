@@ -24,7 +24,7 @@ module.exports = {
       },
     ],
     // formatting
-    // pay attention not to make conflict with prettier
+    // pay attention to use same rules with prettier
     quotes: ['error', 'single'],
     'jsx-quotes': ['error', 'prefer-single'],
     indent: ['error', 2],
