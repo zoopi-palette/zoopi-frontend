@@ -2,29 +2,23 @@ import { RequestService } from './request.service';
 import { Token } from '@web/utils';
 
 class AuthService {
-  static async signin(username: string, password: string) {
+  static async signin(user: { username: string; password: string }) {
     const res = await RequestService.postRequest<
-      {
-        username: string;
-        password: string;
-      },
+      typeof user,
       {
         data: {
           accessToken: string;
           refreshToken: string;
         };
       }
-    >('/auth/signin', {
-      username,
-      password,
-    });
+    >('/auth/signin', user);
 
     Token.setAccessToken(res.data.accessToken);
     Token.setRefreshToken(res.data.refreshToken);
   }
 
   static async signup(authenticationKey, password, phone, username) {
-    const res = await RequestService.postRequest<
+    await RequestService.postRequest<
       {
         authenticationKey: string;
         password: string;

@@ -17,8 +17,7 @@ import {
   TextInputPassword,
   TextInputPasswordProps,
 } from '@web/components/TextInputPassword';
-
-const BUTTON_WIDTH = 400;
+import { useSignin } from '@web/hooks';
 
 export type ModalLoginProps = {
   onClose: () => void;
@@ -26,18 +25,37 @@ export type ModalLoginProps = {
 
 export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   const theme = useTheme();
+  const { mutate } = useSignin();
+
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const BUTTON_WIDTH = 400;
 
-  const handleSubmitLogin: FormEventHandler = useCallback((event) => {
-    event.preventDefault();
+  const handleSubmitLogin: FormEventHandler = useCallback(
+    (event) => {
+      event.preventDefault();
 
-    const email = emailRef?.current?.value;
-    const password = passwordRef?.current?.value;
+      const email = emailRef?.current?.value;
+      const password = passwordRef?.current?.value;
 
-    // eslint-disable-next-line no-console
-    console.log(email, password);
-  }, []);
+      // eslint-disable-next-line no-console
+      console.log(email, password);
+      mutate(
+        { username: email, password },
+        {
+          onSuccess: (data) => {
+            // eslint-disable-next-line no-console
+            console.log(`로그인 성공!!: ${data}`);
+          },
+          onError: (error) => {
+            // eslint-disable-next-line no-console
+            console.log(`로그인 실패: ${error}`);
+          },
+        }
+      );
+    },
+    [mutate]
+  );
 
   const ForwardedComponent = <T,>(
     Component: ElementType,
@@ -56,6 +74,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
     { label: '이메일', placeholder: 'sample@example.co.kr', type: 'email' },
     'EmailInput'
   );
+
   const PasswordField = ForwardedComponent<TextInputPasswordProps>(
     TextInputPassword,
     {},
@@ -110,7 +129,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
           <div css={{ marginBottom: 32 }}>
             <PasswordField ref={passwordRef} />
           </div>
-          <Button color="main" appearance="filled" css={{ fontWeight: 700 }}>
+          <Button
+            type="submit"
+            color="main"
+            appearance="filled"
+            css={{ fontWeight: 700 }}
+          >
             로그인
           </Button>
         </form>
