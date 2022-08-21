@@ -19,14 +19,14 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <link
-          href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
-          rel="preload"
-          as="style"
+          href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css'
+          rel='preload'
+          as='style'
         />
         <body>
           <Main />
           <NextScript />
-          <div id="root-modal" />
+          <div id='root-modal' />
         </body>
       </Html>
     );

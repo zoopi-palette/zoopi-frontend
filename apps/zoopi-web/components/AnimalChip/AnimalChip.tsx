@@ -37,14 +37,14 @@ export const AnimalChip = ({
     const disabledCss: Css = {
       ...(disabled
         ? {
-            cursor: 'default',
-          }
+          cursor: 'default',
+        }
         : {
-            outlineWidth: isSelected ? 2 : 1,
-            outlineColor: isSelected
-              ? theme.colors.sub
-              : theme.colors['grey-30'],
-          }),
+          outlineWidth: isSelected ? 2 : 1,
+          outlineColor: isSelected
+            ? theme.colors.sub
+            : theme.colors['grey-30'],
+        }),
     };
 
     return {
@@ -64,9 +64,10 @@ export const AnimalChip = ({
   }, [disabled, isSelected, theme]);
 
   return (
-    <button type="button" onClick={onClick} css={css} {...rest}>
+
+    <button type='button' onClick={onClick} css={css} {...rest}>
       {avatar && (
-        <Image width={48} height={48} alt="반려동물의 사진" src={avatar} />
+        <Image width={48} height={48} alt='반려동물의 사진' src={avatar} />
       )}
       {!avatar && (
         <div

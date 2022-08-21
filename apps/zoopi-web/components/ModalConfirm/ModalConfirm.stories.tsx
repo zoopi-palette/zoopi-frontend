@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof ModalConfirm> = (args) => {
 
   return (
     <>
-      <button type="button" onClick={() => setIsModalShow(true)}>
+      <button type='button' onClick={() => setIsModalShow(true)}>
         Open Modal
       </button>
       {isModalShow && (

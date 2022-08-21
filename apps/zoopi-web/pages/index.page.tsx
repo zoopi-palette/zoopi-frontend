@@ -16,13 +16,13 @@ const HomePage = () => {
       >
         Home
       </div>
-      <Icon name="circle" />
+      <Icon name='circle' />
       <AnimalChip
         isSelected={isAnimalChipSelected}
-        animalName="코코"
-        animalType="dog"
+        animalName='코코'
+        animalType='dog'
         bloodType={['DEA1-', 'DEA1.1']}
-        avatar="/images/ex-dog-animalchip.png"
+        avatar='/images/ex-dog-animalchip.png'
         onClick={() => setIsAnimalChipSelected(!isAnimalChipSelected)}
       />
     </div>

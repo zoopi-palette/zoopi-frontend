@@ -13,7 +13,7 @@ test('trigger onClick', () => {
   expect(handleClick).toBeCalledTimes(1);
 });
 
-test("don't trigger onClick when it's disabled", () => {
+test('don\'t trigger onClick when it\'s disabled', () => {
   const handleClick = jest.fn();
   const BUTTON_TEXT = 'BUTTON';
 

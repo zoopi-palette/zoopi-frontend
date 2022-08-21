@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: ['**/*'],
+  ignorePatterns: ['apps/**/*'],
   plugins: ['@nrwl/nx'],
   extends: [
     'airbnb',
@@ -23,7 +23,16 @@ module.exports = {
         ],
       },
     ],
-    // less stric
+    // formatting
+    // pay attention to use same rules with prettier
+    quotes: ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-single'],
+    indent: ['error', 2],
+    'no-multi-spaces': 'error',
+    'no-trailing-spaces': 'error',
+    'array-bracket-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
+    // less strict
     '@typescript-eslint/no-empty-interface': 'off',
     // import
     'import/order': [
