@@ -4,5 +4,6 @@
   "eslint.format.enable": true,
   "prettier.bracketSpacing": false,
   "prettier.semi": false,
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "svg.preview.background": "white"
 }
