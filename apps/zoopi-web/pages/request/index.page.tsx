@@ -1,0 +1,76 @@
+import { useTheme } from '@emotion/react';
+import { useEffect, useRef, useState } from 'react';
+import { Button } from '@web/components/Button';
+import { Icon } from '@web/components/Icon';
+import { Modal } from '@web/components/Modal';
+import { CssObject } from '@web/styles/theme';
+
+const RequestPage = () => {
+  const theme = useTheme();
+  const [isOpen, setIsOpen] = useState(true);
+  const [routeToNextPage, setRouteToNextPage] = useState(true);
+  const onClose = () => setIsOpen(false);
+  const [requestReasonRemainLength, setRequestReasonRemainLength] = useState(300);
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(()=>{
+    if (textareaRef.current && inputRef.current) {
+      setRouteToNextPage(true)
+    }
+  }, []);
+
+  const titleCss: CssObject =
+    { fontWeight: 'bold',color:theme.colors['grey-90'], paddingTop: '1.5rem', paddingBottom:'1.5rem', borderBottom: 1 }
+  ;
+
+  const userInputCss: CssObject = { color:theme.colors['grey-90'], '::placeholder':{ color:theme.colors['grey-60'] } };
+
+  const underlineCss: CssObject = { borderStyle: 'solid', borderBottomWidth:1, borderColor:theme.colors['grey-40'] };
+
+  return <Modal width='100%' height='100%' onClose={onClose}>
+    <button type='button' onClick={onClose}>
+      <Icon name='close' size={24} color={theme.colors['grey-50']}/>
+    </button>
+
+    <section css={{ display:'flex', flexDirection: 'column', width: '1200px', height:'100%' }}>
+      <h1 css={{ fontSize: '2rem', ...titleCss, ...underlineCss }}>헌혈요청</h1>
+      <div css={{ display: 'flex', flexDirection: 'column', ...underlineCss }}>
+        <h2 css={{ fontSize:'1.25rem', ...titleCss }}>나의 동물</h2>
+        <div>
+      +
+        </div>
+      </div>
+
+      <div css={{ display:'flex', flexDirection:'column', alignItems:'flex-end', height:'100%', paddingTop: '1.625rem',
+        paddingBottom: '1.375rem', gap:'5px',
+        ...underlineCss }}>
+        <textarea ref={textareaRef} css={{
+          width: '100%',
+          border: 0,
+          flex: 1,
+          resize: 'none',
+          ...userInputCss,
+        }} placeholder='헌혈을 요청하는 이유를 상세히 말해주시면 다른분들에게 도움이 됩니다' />
+        {/* fix: 글자 수 제한 백엔드에 물어보고 수정 */}
+        <span css={{ color: theme.colors['grey-60'] }}>{requestReasonRemainLength}</span>
+      </div>
+      <div css={{
+        display: 'flex',
+        gap: '1.5rem', }}>
+        <h2 css={{
+          fontSize: '1.25rem',
+          ...titleCss
+        }}>혈액 수량</h2>
+        <input ref={inputRef} css={{ width: '184px', ...userInputCss }} placeholder='요청할 수량을 입력해주세요' />
+      </div>
+      <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button appearance='outline' css={{ width: '15.83%' }}>임시저장</Button>
+        <Button color='main' appearance='filled' disabled={routeToNextPage} css={{ maxWidth: '15.83%' }}>다음</Button>
+      </div>
+    </section>
+  </Modal>;
+};
+
+export default RequestPage;
