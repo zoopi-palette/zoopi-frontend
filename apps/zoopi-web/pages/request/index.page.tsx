@@ -28,12 +28,12 @@ const RequestPage = () => {
 
   const underlineCss: CssObject = { borderStyle: 'solid', borderBottomWidth:1, borderColor:theme.colors['grey-40'] };
 
-  return <Modal width='100%' onClose={onClose}>
+  return <Modal width='100%' height='100%' onClose={onClose}>
     <button type='button' onClick={onClose}>
       <Icon name='close' size={24} color={theme.colors['grey-50']}/>
     </button>
 
-    <section css={{ display:'flex', flexDirection: 'column' }}>
+    <section css={{ display:'flex', flexDirection: 'column', width: '1200px', height:'100%' }}>
       <h1 css={{ fontSize: '2rem', ...titleCss, ...underlineCss }}>헌혈요청</h1>
       <div css={underlineCss}>
 
