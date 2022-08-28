@@ -37,6 +37,7 @@ const iconNames: IconName[] = [
   'event',
   'leave',
   'report',
+  'plus-rounded-rectangle',
 ];
 
 export default {

@@ -35,7 +35,8 @@ export type IconName =
   | 'check-circle'
   | 'event'
   | 'leave'
-  | 'report';
+  | 'report'
+  | 'plus-rounded-rectangle';
 
 export type IconProps = {
   name: IconName;
