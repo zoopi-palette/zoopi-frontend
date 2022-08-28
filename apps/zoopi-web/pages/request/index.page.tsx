@@ -43,12 +43,13 @@ const RequestPage = () => {
         </div>
       </div>
 
-      <div css={{ paddingTop: '1.625rem',
+      <div css={{ height:'100%', paddingTop: '1.625rem',
         paddingBottom: '1.375rem',
         ...underlineCss }}>
         <textarea ref={textareaRef} css={{
           width: '100%',
           border: 0,
+          resize: 'none',
           ...userInputCss,
         }} placeholder='헌혈을 요청하는 이유를 상세히 말해주시면 다른분들에게 도움이 됩니다' />
       </div>
