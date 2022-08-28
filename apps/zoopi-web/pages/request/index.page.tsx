@@ -61,9 +61,9 @@ const RequestPage = () => {
         }}>혈액 수량</h2>
         <input ref={inputRef} css={{ width: '184px', ...userInputCss }} placeholder='요청할 수량을 입력해주세요' />
       </div>
-      <div>
-        <Button appearance='outline'>임시저장</Button>
-        <Button color='main' appearance='filled' disabled={routeToNextPage}>다음</Button>
+      <div css={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button appearance='outline' css={{ width: '15.83%' }}>임시저장</Button>
+        <Button color='main' appearance='filled' disabled={routeToNextPage} css={{ maxWidth: '15.83%' }}>다음</Button>
       </div>
     </section>
   </Modal>;
