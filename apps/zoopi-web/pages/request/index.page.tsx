@@ -1,5 +1,5 @@
-import { css, useTheme } from '@emotion/react';
-import React, { useEffect } from 'react';
+import { useTheme } from '@emotion/react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@web/components/Button';
 import { Icon } from '@web/components/Icon';
 import { Modal } from '@web/components/Modal';
@@ -7,12 +7,13 @@ import { CssObject } from '@web/styles/theme';
 
 const RequestPage = () => {
   const theme = useTheme();
-  const [isOpen, setIsOpen] = React.useState(true);
-  const [routeToNextPage, setRouteToNextPage] = React.useState(true);
+  const [isOpen, setIsOpen] = useState(true);
+  const [routeToNextPage, setRouteToNextPage] = useState(true);
   const onClose = () => setIsOpen(false);
+  const [requestReasonRemainLength, setRequestReasonRemainLength] = useState(300);
 
-  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(()=>{
     if (textareaRef.current && inputRef.current) {
@@ -36,22 +37,24 @@ const RequestPage = () => {
     <section css={{ display:'flex', flexDirection: 'column', width: '1200px', height:'100%' }}>
       <h1 css={{ fontSize: '2rem', ...titleCss, ...underlineCss }}>헌혈요청</h1>
       <div css={underlineCss}>
-
         <h2 css={{ fontSize:'1.25rem', ...titleCss }}>나의 동물</h2>
         <div>
       +
         </div>
       </div>
 
-      <div css={{ height:'100%', paddingTop: '1.625rem',
-        paddingBottom: '1.375rem',
+      <div css={{ display:'flex', flexDirection:'column', alignItems:'flex-end', height:'100%', paddingTop: '1.625rem',
+        paddingBottom: '1.375rem', gap:'5px',
         ...underlineCss }}>
         <textarea ref={textareaRef} css={{
           width: '100%',
           border: 0,
+          flex: 1,
           resize: 'none',
           ...userInputCss,
         }} placeholder='헌혈을 요청하는 이유를 상세히 말해주시면 다른분들에게 도움이 됩니다' />
+        {/* fix: 글자 수 제한 백엔드에 물어보고 수정 */}
+        <span css={{ color: theme.colors['grey-60'] }}>{requestReasonRemainLength}</span>
       </div>
       <div css={{
         display: 'flex',
