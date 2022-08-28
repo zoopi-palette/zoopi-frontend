@@ -24,7 +24,7 @@ const RequestPage = () => {
     { fontWeight: 'bold',color:theme.colors['grey-90'], paddingTop: '1.5rem', paddingBottom:'1.5rem', borderBottom: 1 }
   ;
 
-  const userInputCss: CssObject = { color:theme.colors['grey-60'], '::placeholder':{ color:theme.colors['grey-90'] } };
+  const userInputCss: CssObject = { color:theme.colors['grey-90'], '::placeholder':{ color:theme.colors['grey-60'] } };
 
   const underlineCss: CssObject = { borderStyle: 'solid', borderBottomWidth:1, borderColor:theme.colors['grey-40'] };
 
@@ -43,14 +43,14 @@ const RequestPage = () => {
         </div>
       </div>
 
-      {/* TODO: fix style */}
-      <div css={css`${underlineCss}; padding-top: 1.625rem;
-        padding-bottom: 1.375rem;`}>
-        <textarea ref={textareaRef} css={css`
-        ${userInputCss};
-        width: 100%;
-        border: 0;
-      `} placeholder='헌혈을 요청하는 이유를 상세히 말해주시면 다른분들에게 도움이 됩니다' />
+      <div css={{ paddingTop: '1.625rem',
+        paddingBottom: '1.375rem',
+        ...underlineCss }}>
+        <textarea ref={textareaRef} css={{
+          width: '100%',
+          border: 0,
+          ...userInputCss,
+        }} placeholder='헌혈을 요청하는 이유를 상세히 말해주시면 다른분들에게 도움이 됩니다' />
       </div>
       <div css={{
         display: 'flex',
