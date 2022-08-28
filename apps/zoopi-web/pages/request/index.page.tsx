@@ -36,7 +36,7 @@ const RequestPage = () => {
 
     <section css={{ display:'flex', flexDirection: 'column', width: '1200px', height:'100%' }}>
       <h1 css={{ fontSize: '2rem', ...titleCss, ...underlineCss }}>헌혈요청</h1>
-      <div css={underlineCss}>
+      <div css={{ display: 'flex', flexDirection: 'column', ...underlineCss }}>
         <h2 css={{ fontSize:'1.25rem', ...titleCss }}>나의 동물</h2>
         <div>
       +
