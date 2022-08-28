@@ -59,7 +59,7 @@ const RequestPage = () => {
           fontSize: '1.25rem',
           ...titleCss
         }}>혈액 수량</h2>
-        <input ref={inputRef} css={userInputCss} placeholder='요청할 수량을 입력해주세요' />
+        <input ref={inputRef} css={{ width: '184px', ...userInputCss }} placeholder='요청할 수량을 입력해주세요' />
       </div>
       <div>
         <Button appearance='outline'>임시저장</Button>
