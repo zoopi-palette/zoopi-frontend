@@ -4,19 +4,12 @@ import {
   useCallback,
   FormEventHandler,
   useRef,
-  forwardRef,
-  MutableRefObject,
-  ElementType,
 } from 'react';
 import { Button } from '@web/components/Button';
 import { Icon } from '@web/components/Icon';
 import { Logo } from '@web/components/Logo';
 import { Modal } from '@web/components/Modal';
-import { TextInput, TextInputProps } from '@web/components/TextInput';
-import {
-  TextInputPassword,
-  TextInputPasswordProps,
-} from '@web/components/TextInputPassword';
+import { TextInput } from '@web/components/TextInput';
 import { useSignin } from '@web/hooks';
 
 export type ModalLoginProps = {
@@ -55,30 +48,6 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
       );
     },
     [mutate]
-  );
-
-  const ForwardedComponent = <T,>(
-    Component: ElementType,
-    props: T,
-    displayName: string
-  ) => {
-    const forwardedRef = (_, ref: MutableRefObject<HTMLInputElement>) => (
-      <Component forwardedref={ref} {...props} />
-    );
-    forwardedRef.displayName = displayName;
-    return forwardRef(forwardedRef);
-  };
-
-  const EmailField = ForwardedComponent<TextInputProps>(
-    TextInput,
-    { label: '이메일', placeholder: 'sample@example.co.kr', type: 'email' },
-    'EmailInput'
-  );
-
-  const PasswordField = ForwardedComponent<TextInputPasswordProps>(
-    TextInputPassword,
-    {},
-    'PasswordInput'
   );
 
   return (
@@ -123,11 +92,11 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
           }}
         >
           <div css={{ marginBottom: 32 }}>
-            <EmailField ref={emailRef} />
+            <TextInput label='이메일' placeholder='sample@example.co.kr' type='email' ref={emailRef} />
           </div>
 
           <div css={{ marginBottom: 32 }}>
-            <PasswordField ref={passwordRef} />
+            <TextInput label='비밀번호' type='password' ref={passwordRef} />
           </div>
           <Button
             type='submit'

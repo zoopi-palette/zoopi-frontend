@@ -9,6 +9,7 @@ import {
   useId,
   useState,
   MutableRefObject,
+  forwardRef,
 } from 'react';
 import { Icon } from '@web/components/Icon';
 import { Css, CssObject } from '@web/styles/theme';
@@ -26,7 +27,7 @@ export type TextInputProps = {
   right?: ReactNode;
 };
 
-export const TextInput = (
+const TextInput = (
   {
     children,
     onChange,
@@ -145,3 +146,5 @@ export const TextInput = (
     </label>
   );
 };
+
+export default forwardRef<HTMLInputElement, TextInputProps>(TextInput)
