@@ -8,7 +8,8 @@
     "test": "nx test",
     "tsc": "tsc --project apps/zoopi-web/tsconfig.json",
     "lint": "nx run zoopi-web:lint --fix",
-    "format": "prettier --write . && yarn run lint",
+    "prettier": "prettier --write .",
+    "format": "yarn run prettier && yarn run lint",
     "prepare": "husky install"
   },
   "private": true,
@@ -67,7 +68,7 @@
     "chromatic": "^6.6.3",
     "cypress": "^9.1.0",
     "eslint": "^8.2.0",
-    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.10.3",

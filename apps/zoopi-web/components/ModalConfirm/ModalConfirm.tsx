@@ -26,7 +26,7 @@ export const ModalConfirm = ({
   <Modal onClose={onClose}>
     <header css={{ display: 'flex', alignItems: 'baseline' }}>
       <h1
-        id="dialogTitle"
+        id='dialogTitle'
         css={{
           flexBasis: '100%',
           flexWrap: 'wrap',
@@ -39,8 +39,8 @@ export const ModalConfirm = ({
       >
         {title}
       </h1>
-      <button type="button" onClick={onClose}>
-        <Icon name="close" size={24} />
+      <button type='button' onClick={onClose}>
+        <Icon name='close' size={24} />
       </button>
     </header>
     <main
@@ -49,7 +49,7 @@ export const ModalConfirm = ({
       }}
     >
       <p
-        id="dialogDesc"
+        id='dialogDesc'
         css={{
           whiteSpace: 'pre-line',
           fontSize: 16,
@@ -73,8 +73,8 @@ export const ModalConfirm = ({
       {cancel && (
         <div>
           <Button
-            color="gray"
-            appearance="outline"
+            color='gray'
+            appearance='outline'
             onClick={cancel.onCancelClick}
           >
             {cancel.cancelMessage || '취소'}
@@ -83,7 +83,7 @@ export const ModalConfirm = ({
       )}
       {confirm && (
         <div>
-          <Button color="main" onClick={confirm.onConfirmClick}>
+          <Button color='main' onClick={confirm.onConfirmClick}>
             {confirm.confirmMessage || '확인'}
           </Button>
         </div>

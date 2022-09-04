@@ -39,7 +39,7 @@ export const TextInput = (
     type = 'text',
     ...rest
   }: TextInputProps,
-  ref: MutableRefObject<HTMLInputElement>
+  ref?: MutableRefObject<HTMLInputElement>
 ) => {
   const theme = useTheme();
   const componentId = useId();
@@ -129,7 +129,7 @@ export const TextInput = (
         {right}
         {clearDisabled ? null : (
           <button
-            type="button"
+            type='button'
             onClick={handleClearClick}
             css={{
               display: value || localValue ? 'inline-flex' : 'none',
@@ -138,7 +138,7 @@ export const TextInput = (
               paddingLeft: 2,
             }}
           >
-            <Icon name="close-circle" color={theme.colors['grey-50']} />
+            <Icon name='close-circle' color={theme.colors['grey-50']} />
           </button>
         )}
       </div>

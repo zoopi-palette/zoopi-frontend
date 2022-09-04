@@ -23,11 +23,11 @@ export const TextInputPassword = ({ ...rest }: TextInputPasswordProps) => {
       type={type}
       right={
         <button
-          type="button"
+          type='button'
           css={{ paddingRight: 2, paddingLeft: 2, cursor: 'pointer' }}
           onClick={handleEyeClick}
         >
-          <Icon name="eye" color={theme.colors['grey-60']} />
+          <Icon name='eye' color={theme.colors['grey-60']} />
         </button>
       }
       {...rest}

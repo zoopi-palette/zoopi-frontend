@@ -19,7 +19,7 @@ export const Logo = ({ height, width }: LogoProps) => {
     >
       <ReactSVG
         css={{ display: 'inline-block' }}
-        src="/zoopi-logo.svg"
+        src='/zoopi-logo.svg'
         beforeInjection={(svg) => {
           svg.setAttribute('style', `width: ${width}px; height: ${height}px;`);
         }}

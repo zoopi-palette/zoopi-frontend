@@ -63,7 +63,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
     displayName: string
   ) => {
     const forwardedRef = (_, ref: MutableRefObject<HTMLInputElement>) => (
-      <Component forwardedRef={ref} {...props} />
+      <Component forwardedref={ref} {...props} />
     );
     forwardedRef.displayName = displayName;
     return forwardRef(forwardedRef);
@@ -82,7 +82,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   );
 
   return (
-    <Modal onClose={onClose} height="600px" width="560px">
+    <Modal onClose={onClose} height='600px' width='560px'>
       <div
         css={{
           padding: '0 80px',
@@ -90,10 +90,10 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
           justifyContent: 'center',
           height: '100%',
         }}
-        aria-label="loginForm"
+        aria-label='loginForm'
       >
         <button
-          type="button"
+          type='button'
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus // TODO: fix eslint error
           onClick={onClose}
@@ -105,11 +105,11 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             marginLeft: 10,
           }}
         >
-          <Icon name="close" size={24} />
+          <Icon name='close' size={24} />
         </button>
         <div
           css={{ justifyContent: 'center', marginBottom: 50 }}
-          aria-label="zoopi logo"
+          aria-label='zoopi logo'
         >
           <Logo height={59} width={157} />
         </div>
@@ -130,16 +130,16 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
             <PasswordField ref={passwordRef} />
           </div>
           <Button
-            type="submit"
-            color="main"
-            appearance="filled"
+            type='submit'
+            color='main'
+            appearance='filled'
             css={{ fontWeight: 700 }}
           >
             로그인
           </Button>
         </form>
         <div css={{ flexDirection: 'column', position: 'relative' }}>
-          <Button appearance="outline" css={{ marginBottom: 16 }}>
+          <Button appearance='outline' css={{ marginBottom: 16 }}>
             <span
               css={{
                 position: 'absolute',
@@ -148,12 +148,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
                 color: theme.colors['grey-70'],
               }}
             >
-              <Icon name="naver" size={24} />
+              <Icon name='naver' size={24} />
             </span>
             네이버로 시작하기
           </Button>
           <div css={{ marginTop: 16, alignItems: 'center' }}>
-            <Link href="/signup" passHref>
+            <Link href='/signup' passHref>
               {/* TODO: fix eslint error */}
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
@@ -174,7 +174,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
                 color: theme.colors['grey-50'],
               }}
             />
-            <Link href="/find/id" passHref>
+            <Link href='/find/id' passHref>
               {/* TODO: fix eslint error */}
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
@@ -195,7 +195,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
                 color: theme.colors['grey-50'],
               }}
             />
-            <Link href="/find/password" passHref>
+            <Link href='/find/password' passHref>
               {/* TODO: fix eslint error */}
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a

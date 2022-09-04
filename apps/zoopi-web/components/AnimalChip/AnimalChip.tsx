@@ -1,58 +1,75 @@
 import { useTheme } from '@emotion/react';
 import Image from 'next/image';
-import React, { useMemo, MouseEventHandler } from 'react';
+import { useMemo, MouseEventHandler } from 'react';
 import { Css } from '@web/styles/theme';
 
 export type Dog = {
-  type: 'dog';
+  animalType: 'dog';
   bloodType: ['DEA1-', 'DEA1.1'];
 };
 
 export type Cat = {
-  type: 'cat';
+  animalType: 'cat';
   bloodType: ['A'];
 };
 
 export type AnimalChipProps = (Dog | Cat) & {
-  name: string;
-  image?: string;
+  animalName: string;
+  avatar?: string;
+  disabled?: boolean;
   isSelected: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const AnimalChip = ({
-  type,
+  animalType,
   bloodType,
-  name,
-  image = '/images/ex-dog-animalchip.png',
+  animalName,
+  avatar,
+  disabled = false,
   isSelected,
   onClick,
   ...rest
 }: AnimalChipProps) => {
   const theme = useTheme();
 
-  const css: Css = useMemo(
-    () => ({
+  const css: Css = useMemo(() => {
+    const disabledCss: Css = {
+      ...(disabled
+        ? {
+          cursor: 'default',
+        }
+        : {
+          outlineWidth: isSelected ? 2 : 1,
+          outlineColor: isSelected
+            ? theme.colors.sub
+            : theme.colors['grey-30'],
+        }),
+    };
+
+    return {
       width: 219,
       height: 72,
       borderRadius: 12,
-      borderWidth: isSelected ? 2 : 1,
-      borderStyle: 'solid',
-      borderColor: isSelected ? theme.colors.sub : '#E8EBF0',
       background: theme.colors.white,
-      cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       padding: 12,
       gap: 12,
-    }),
-    [theme, isSelected]
-  );
+      outlineStyle: 'solid',
+      outlineWidth: 1,
+      outlineColor: theme.colors['grey-30'],
+      ...disabledCss,
+    };
+  }, [disabled, isSelected, theme]);
 
   return (
-    <button type="button" onClick={onClick} css={css} {...rest}>
-      {image && <Image width={48} height={48} alt="animal-image" src={image} />}
-      {!image && (
+
+    <button type='button' onClick={onClick} css={css} {...rest}>
+      {avatar && (
+        <Image width={48} height={48} alt='반려동물의 사진' src={avatar} />
+      )}
+      {!avatar && (
         <div
           css={{
             width: '48px',
@@ -80,22 +97,22 @@ export const AnimalChip = ({
           <span
             css={{
               fontWeight: 'bold',
-              color: '#1A1E27',
+              color: theme.colors['grey-90'],
               fontSize: '1.125rem',
             }}
           >
-            {name}
+            {animalName}
           </span>
           <span
             css={{
-              background: 'rgba(255, 62, 61, 0.12)',
-              color: theme.colors.main,
+              background: theme.colors.sub,
+              color: theme.colors['grey-10'],
               fontSize: '0.625rem',
               padding: 4,
               borderRadius: 4,
             }}
           >
-            {type === 'dog' ? '강아지' : '고양이'}
+            {animalType === 'dog' ? '강아지' : '고양이'}
           </span>
         </div>
         <div
@@ -108,7 +125,7 @@ export const AnimalChip = ({
             <span
               key={blood}
               css={{
-                color: '#8E95A3',
+                color: theme.colors['grey-60'],
                 fontSize: '0.875rem',
               }}
             >
