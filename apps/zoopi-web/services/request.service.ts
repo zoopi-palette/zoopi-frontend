@@ -14,14 +14,12 @@ export class RequestService {
   ) {
     const res = await axios.get<RequestT>(
       this.baseUrl + route,
-      token
-        ? {
-            headers: {
-              ...customHeader,
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        : customHeader
+      {
+        headers: {
+          ...customHeader,
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return res;
   }
@@ -35,13 +33,12 @@ export class RequestService {
     const res = await axios.post<RequestT, ResponseT>(
       this.baseUrl + route,
       body,
-      token
-        ? {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        : customHeader
+      {
+        headers: {
+          ...customHeader,
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return res;
   }

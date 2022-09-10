@@ -11,6 +11,7 @@ import { Logo } from '@web/components/Logo';
 import { Modal } from '@web/components/Modal';
 import { TextInput } from '@web/components/TextInput';
 import { useSignin } from '@web/hooks';
+import { validateId, validatePassword } from '@web/utils';
 
 export type ModalLoginProps = {
   onClose: () => void;
@@ -20,7 +21,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   const theme = useTheme();
   const { mutate } = useSignin();
 
-  const emailRef = useRef<HTMLInputElement>(null);
+  const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const BUTTON_WIDTH = 400;
 
@@ -28,26 +29,34 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
     (event) => {
       event.preventDefault();
 
-      const email = emailRef?.current?.value;
+      const id = idRef?.current?.value;
       const password = passwordRef?.current?.value;
 
-      // eslint-disable-next-line no-console
-      console.log(email, password);
+      if(!validateId(id)) {
+        alert('아이디는 6글자 이상 20글자 이하의 숫자, 영어 조합이어야 합니다.');
+        return;
+      }
+      if(!validatePassword(password)){
+        // eslint-disable-next-line
+        alert(`비밀번호는 영문자(대/소)+숫자+특수문자 3가지 조합 10자리 이상. ${"\n"}사용 가능한 특수문자: # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ${"] ^ _ ` { | } ~ \ "}`);
+        return;
+      }
+
       mutate(
-        { username: email, password },
+        { username: id, password },
         {
-          onSuccess: (data) => {
-            // eslint-disable-next-line no-console
-            console.log(`로그인 성공!!: ${data}`);
-          },
-          onError: (error) => {
-            // eslint-disable-next-line no-console
-            console.log(`로그인 실패: ${error}`);
-          },
+          onSettled: (data)=>{
+            const { code } = data;
+            if(code==='R-M006'){
+              onClose();
+            }else{
+              alert(`${data.message}`)
+            }
+          }
         }
       );
     },
-    [mutate]
+    [mutate,onClose]
   );
 
   return (
@@ -92,7 +101,7 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
           }}
         >
           <div css={{ marginBottom: 32 }}>
-            <TextInput label='이메일' placeholder='sample@example.co.kr' type='email' ref={emailRef} />
+            <TextInput label='아이디' placeholder='sample@example.co.kr' type='text' ref={idRef} />
           </div>
 
           <div css={{ marginBottom: 32 }}>

@@ -3,18 +3,25 @@ import { Token } from '@web/utils';
 
 class AuthService {
   static async signin(user: { username: string; password: string }) {
-    const res = await RequestService.postRequest<
+    const { data } = await RequestService.postRequest<
       typeof user,
       {
-        data: {
-          accessToken: string;
-          refreshToken: string;
-        };
+        data:{
+          code:string,
+          message: string,
+          status: string,
+          data: {
+            accessToken: string;
+            refreshToken: string;
+          }
+        }
       }
     >('/auth/signin', user);
 
-    Token.setAccessToken(res.data.accessToken);
-    Token.setRefreshToken(res.data.refreshToken);
+    Token.setAccessToken(data.data.accessToken);
+    Token.setRefreshToken(data.data.refreshToken);
+
+    return data;
   }
 
   static async signup(authenticationKey, password, phone, username) {
@@ -28,9 +35,10 @@ class AuthService {
       },
       {
         data: {
+          data: {
           accessToken: string;
           refreshToken: string;
-        };
+        }};
       }
     >('auth/signup', {
       authenticationKey,
