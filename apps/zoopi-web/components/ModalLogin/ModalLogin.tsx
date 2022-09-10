@@ -4,21 +4,14 @@ import {
   useCallback,
   FormEventHandler,
   useRef,
-  forwardRef,
-  MutableRefObject,
-  ElementType,
 } from 'react';
 import { Button } from '@web/components/Button';
 import { Icon } from '@web/components/Icon';
 import { Logo } from '@web/components/Logo';
 import { Modal } from '@web/components/Modal';
-import { TextInput, TextInputProps } from '@web/components/TextInput';
-import {
-  TextInputPassword,
-  TextInputPasswordProps,
-} from '@web/components/TextInputPassword';
-
-const BUTTON_WIDTH = 400;
+import { TextInput } from '@web/components/TextInput';
+import { useSignin } from '@web/hooks';
+import { validateId, validatePassword } from '@web/utils';
 
 export type ModalLoginProps = {
   onClose: () => void;
@@ -26,40 +19,44 @@ export type ModalLoginProps = {
 
 export const ModalLogin = ({ onClose }: ModalLoginProps) => {
   const theme = useTheme();
-  const emailRef = useRef<HTMLInputElement>(null);
+  const { mutate } = useSignin();
+
+  const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const BUTTON_WIDTH = 400;
 
-  const handleSubmitLogin: FormEventHandler = useCallback((event) => {
-    event.preventDefault();
+  const handleSubmitLogin: FormEventHandler = useCallback(
+    (event) => {
+      event.preventDefault();
 
-    const email = emailRef?.current?.value;
-    const password = passwordRef?.current?.value;
+      const id = idRef?.current?.value;
+      const password = passwordRef?.current?.value;
 
-    // eslint-disable-next-line no-console
-    console.log(email, password);
-  }, []);
+      if(!validateId(id)) {
+        alert('아이디는 6글자 이상 영문자(대/소)+숫자 조합이어야 합니다.');
+        return;
+      }
+      if(!validatePassword(password)){
+        // eslint-disable-next-line
+        alert(`비밀번호는 영문자(대/소)+숫자+특수문자 3가지 조합 10자리 이상이어야 합니다. ${"\n"}사용 가능한 특수문자: # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ${"] ^ _ ` { | } ~ \ "}`);
+        return;
+      }
 
-  const ForwardedComponent = <T,>(
-    Component: ElementType,
-    props: T,
-    displayName: string
-  ) => {
-    const forwardedRef = (_, ref: MutableRefObject<HTMLInputElement>) => (
-      <Component forwardedRef={ref} {...props} />
-    );
-    forwardedRef.displayName = displayName;
-    return forwardRef(forwardedRef);
-  };
-
-  const EmailField = ForwardedComponent<TextInputProps>(
-    TextInput,
-    { label: '이메일', placeholder: 'sample@example.co.kr', type: 'email' },
-    'EmailInput'
-  );
-  const PasswordField = ForwardedComponent<TextInputPasswordProps>(
-    TextInputPassword,
-    {},
-    'PasswordInput'
+      mutate(
+        { username: id, password },
+        {
+          onSettled: (data)=>{
+            const { code } = data;
+            if(code==='R-M006'){
+              onClose();
+            }else{
+              alert(`${data.message}`)
+            }
+          }
+        }
+      );
+    },
+    [mutate,onClose]
   );
 
   return (
@@ -104,13 +101,18 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
           }}
         >
           <div css={{ marginBottom: 32 }}>
-            <EmailField ref={emailRef} />
+            <TextInput label='아이디' placeholder='sample@example.co.kr' type='text' ref={idRef} />
           </div>
 
           <div css={{ marginBottom: 32 }}>
-            <PasswordField ref={passwordRef} />
+            <TextInput label='비밀번호' type='password' ref={passwordRef} />
           </div>
-          <Button color='main' appearance='filled' css={{ fontWeight: 700 }}>
+          <Button
+            type='submit'
+            color='main'
+            appearance='filled'
+            css={{ fontWeight: 700 }}
+          >
             로그인
           </Button>
         </form>

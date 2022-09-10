@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { TextInput } from './TextInput';
+import { TextInput } from './index';
 
 export default {
   title: 'atoms/TextInput',

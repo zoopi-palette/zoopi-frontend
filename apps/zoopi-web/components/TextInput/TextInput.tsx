@@ -8,6 +8,8 @@ import {
   useMemo,
   useId,
   useState,
+  MutableRefObject,
+  forwardRef,
 } from 'react';
 import { Icon } from '@web/components/Icon';
 import { Css, CssObject } from '@web/styles/theme';
@@ -23,22 +25,23 @@ export type TextInputProps = {
   type?: 'email' | 'password' | 'text';
   clearDisabled?: boolean;
   right?: ReactNode;
-  forwardedRef?: string;
 };
 
-export const TextInput = ({
-  children,
-  onChange,
-  onBlur,
-  onFocus,
-  value,
-  label,
-  clearDisabled = false,
-  right,
-  type = 'text',
-  forwardedRef,
-  ...rest
-}: TextInputProps) => {
+const TextInput = (
+  {
+    children,
+    onChange,
+    onBlur,
+    onFocus,
+    value,
+    label,
+    clearDisabled = false,
+    right,
+    type = 'text',
+    ...rest
+  }: TextInputProps,
+  ref?: MutableRefObject<HTMLInputElement>
+) => {
   const theme = useTheme();
   const componentId = useId();
 
@@ -120,7 +123,7 @@ export const TextInput = ({
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleFocus}
-        ref={forwardedRef}
+        ref={ref}
         css={css}
       />
       <div css={{ position: 'absolute', right: 0, bottom: 6 }}>
@@ -143,3 +146,5 @@ export const TextInput = ({
     </label>
   );
 };
+
+export default forwardRef<HTMLInputElement, TextInputProps>(TextInput)
