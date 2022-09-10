@@ -33,12 +33,12 @@ export const ModalLogin = ({ onClose }: ModalLoginProps) => {
       const password = passwordRef?.current?.value;
 
       if(!validateId(id)) {
-        alert('아이디는 6글자 이상 20글자 이하의 숫자, 영어 조합이어야 합니다.');
+        alert('아이디는 6글자 이상 영문자(대/소)+숫자 조합이어야 합니다.');
         return;
       }
       if(!validatePassword(password)){
         // eslint-disable-next-line
-        alert(`비밀번호는 영문자(대/소)+숫자+특수문자 3가지 조합 10자리 이상. ${"\n"}사용 가능한 특수문자: # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ${"] ^ _ ` { | } ~ \ "}`);
+        alert(`비밀번호는 영문자(대/소)+숫자+특수문자 3가지 조합 10자리 이상이어야 합니다. ${"\n"}사용 가능한 특수문자: # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ${"] ^ _ ` { | } ~ \ "}`);
         return;
       }
 
